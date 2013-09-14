@@ -1,1 +1,0 @@
-Alipw.DataStore=Alipw.extend(Alipw.Nonvisual,{data:null,constructor:function(){Alipw.DataStore.superclass.constructor.apply(this,arguments)},commitProperties:function(){Alipw.DataStore.superclass.commitProperties.apply(this,arguments)},initialize:function(){Alipw.DataStore.superclass.initialize.apply(this,arguments)},getData:function(){return this.data}});

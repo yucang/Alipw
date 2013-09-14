@@ -1,1 +1,0 @@
-Alipw.Event=function(){var a=function(d,c,e,b){jQuery.extend(this,e);this.type=d.replace(/alipw\-/g,"");this.currentTarget=c;this.target=c;this.jQueryEvent=b};a.prototype={preventDefault:function(){if(this.jQueryEvent){this.jQueryEvent.preventDefault()}this.isDefaultPrevented=true},stopPropagation:function(){if(this.jQueryEvent){this.jQueryEvent.stopPropagation()}}};return a}();

@@ -9,7 +9,7 @@
 	<property name="release" location="bin-release" />
 	<property name="release.lib" location="${release}/alipw" />
 	<property name="release.baselib" location="${release}/alipw/baselib" />
-	<property name="publish" location="../alipw_preview_${dirname}/WebContent" />
+	<property name="publish" location="../alipw_preview/WebContent" />
     <property name="charset" value="utf-8"/>
 	
 	<target name="compress">

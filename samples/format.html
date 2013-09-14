@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Format</title>
+<script type="text/javascript">
+Alipw.importClass(
+	"Alipw.utils.Format"
+);
+Alipw.onReady(function(){
+	var html = '';
+	var date = new Date();
+	html += date + '<br />';
+	html += Alipw.utils.Format.date(date,'YYYY-MM-DD') + '<br />';
+	html += Alipw.utils.Format.date(date,'YY-M-D') + '<br />';
+	html += Alipw.utils.Format.date(date,'YYYY/MM/DD') + '<br />';
+	html += Alipw.utils.Format.date(date,'YYYY年M月D日') + '<br />';
+	$('#output').html(html);
+});
+</script>
+</head>
+<body>
+	<div id="output"></div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.alipw-theme-default .alipw-combobox{}
+.alipw-theme-default .alipw-combobox-over{}
+.alipw-theme-default .alipw-combobox-wrap{ border:1px solid #CCC; background:#FFF url(../images/sprite-combo.gif) 0 0 repeat-x;}
+.alipw-theme-default .alipw-combobox-over .alipw-combobox-wrap{ border-color:#AFCBD4; background-position:0 -200px;}
+.alipw-theme-default .alipw-combobox-expanded{}
+.alipw-theme-default .alipw-combobox-expanded .alipw-combobox-wrap{ border-color:#AFCBD4; background-position:0 -200px;}
+.alipw-theme-default .alipw-combobox-down{}
+.alipw-theme-default .alipw-combobox-down .alipw-combobox-wrap{ border-color:#AFCBD4; background-position:0 -400px;}
+.alipw-theme-default .alipw-combobox-body-content{ padding:3px 16px 3px 7px; background:url(../images/combo-arrow-down.gif) right center no-repeat;}
+.alipw-theme-default .alipw-combobox-text{}
+.alipw-theme-default .alipw-combobox-list{}
+.alipw-theme-default .alipw-combobox-list .alipw-list-wrap{}
+.alipw-theme-default .alipw-combobox-list-above{}
+.alipw-theme-default .alipw-combobox-list-above .alipw-list-wrap{ border-bottom:none;}
+.alipw-theme-default .alipw-combobox-list-above .alipw-list-footer{ border-bottom:1px solid #EBEBEB;}
+.alipw-theme-default .alipw-combobox-list-underneath{}
+.alipw-theme-default .alipw-combobox-list-underneath .alipw-list-wrap{ border-top:none;}
+.alipw-theme-default .alipw-combobox-list-underneath .alipw-list-header{ border-top:1px solid #EBEBEB;}

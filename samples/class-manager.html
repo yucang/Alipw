@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Window</title>
+<script type="text/javascript">
+
+Alipw.ClassManager.loadClass(
+	"Alipw.Button",
+	"Alipw.Msg"
+);
+Alipw.onReady(function(){
+	var btn1 = new Alipw.Button({
+		label:"Alert",
+		renderTo:"btn1",
+		handler:function(){
+			Alipw.Msg.alert("Hello",'Hello! This is a demo alert message. I\'m gonna show you the feature of Alipw.Msg.alert method. You can set a config object of Alipw.Window to set the style of this message box. also, you can set the text of the OK button and even the icon in the message box.');
+		}
+	});
+});
+</script>
+</head>
+<body>
+Modal window <br /><br /><br />
+
+<span id="btn1" style="margin-right:10px"></span>
+<span id="btn2" style="margin-right:10px"></span>
+<span id="btn3" style="margin-right:10px"></span><br />
+
+From Wikipedia, the free encyclopedia<br />
+
+
+
+
+In user interface design, a modal window is a child window that requires users to interact with it before they can return to operating the parent application, thus preventing the workflow on the application main window. Modal windows are often called heavy windows or modal dialogs because the window is often used to display a dialog box.<br />
+ 
+Modal windows are commonly used in GUI systems to command user awareness and to display emergency states. On the Web, they are often used to show images in detail.[1]<br />
+ 
+
+
+
+
+Contents<br />
+ [hide] 1 Relevance and usage 1.1 Use cases<br />
+ 1.2 Modal sheets in Mac OS X<br />
+ <br />
+2 Criticism<br />
+ 3 Control of interaction flow 3.1 Unexpected interruptions<br />
+ <br />
+4 Design recommendations<br />
+ 5 See also<br />
+ 6 References<br />
+ <br />
+<br />
+[edit] Relevance and usage<br />
+ <br />
+[edit] Use cases<br />
+ <br />
+Frequent uses of modal windows include:<br />
+ Drawing attention to vital pieces of information. This use has been criticised as ineffective because users are bombarded with too many dialog boxes, and habituate to simply clicking "Close", "Cancel", or "OK" without reading or understanding the message.[2][3][4]<br />
+ Blocking the application flow until information required to continue is entered, as for example a password in a login process. Another example are file dialogs to open and save files in an application.<br />
+ Collecting application configuration options in a centralized dialog. In such cases, typically the changes are applied upon closing the dialog, and access to the application is disabled while the edits are being made.<br />
+ Warning that the effects of the current action are not reversible. This is a frequent interaction pattern for modal dialogs, but it is also criticised by usability experts as being ineffective for its intended use (protection against errors in destructive actions) due to habituation. Actually making the action reversible (providing an "undo" option) is recommended instead.[5]<br />
+ <br />
+[edit] Modal sheets in Mac OS X<br />
+ <br />
+Many features that would typically be represented by modal windows are implemented as modal transient panels called Sheets on Mac OS X. Transient windows behave similarly to modal windows – they are always on top of the parent window and are not shown in the window list, but they do not disable the use of other windows in the application. Sheets slide out of the window's title bar, and usually need to be dismissed before the window can continue to be used, but the rest of the application will stay usable. Thus they create a mode inside the window containing them, but are modeless with respect to the rest of the application.<br />
+<br />
+</body>
+</html>

@@ -1,0 +1,10 @@
+.alipw-datagrid{ border: 1px solid #999;font: 12px/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif; }
+.alipw-datagrid-table{ width: 100%; border-collapse: collapse;  }
+.alipw-datagrid-thead th,
+.alipw-datagrid-tfoot th{ padding: 5px 10px; height: 20px; background: #EEE url('../images/sprite-grey.gif') repeat-x 0 0; font-size: 12px; color: #333; text-shadow: 1px 1px #FFF; text-align: left; border: 1px solid #999;  }
+.alipw-datagrid-thead th{ border-width: 0 0 1px 0 ; }
+.alipw-datagrid-tfoot th{ border-width: 1px 0 0 0 ; }
+.alipw-datagrid-tbody{ color: #666; }
+.alipw-datagrid-tbody td{ padding: 5px 10px; height: 20px; border-top: 1px solid #EEE; }
+.alipw-datagrid-alt td{ background: #F6F6F6; }
+.alipw-datagrid-radius{ border-bottom-radius: 3px; }

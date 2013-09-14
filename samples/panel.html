@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Panel</title>
+<script type="text/javascript">
+Alipw.importClass("Alipw.Panel");
+Alipw.onReady(function(){
+	var panel = new Alipw.Panel({
+		width:500,
+		height:300,
+		title:"Alipw Panel",
+		html:"abc",
+		renderTo:"wrapper"
+	});
+	
+	panel.appendChild($("#demoContent"));
+	
+	$("#removeChild").click(function(){
+		panel.removeChild($("#demoContent"));
+	});
+});
+</script>
+</head>
+<body>
+<div id="demoContent" style="background:#F60">demo content</div>
+<div id="wrapper"></div>
+<button id="removeChild">remove</button>
+</body>
+</html>

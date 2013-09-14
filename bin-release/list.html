@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>List</title>
+<script type="text/javascript">
+Alipw.importClass('Alipw.List');
+Alipw.onReady(function(){
+	var list = new Alipw.List({
+		renderTo:"#wrapper",
+		store:new Alipw.DataStore({
+			data:[
+				{
+					text:'list item 1list item 1list item 1list item 1list item 1list item 1list item 1',
+					data:'1'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				}
+			]
+		}),
+		width:300,
+		height:200
+	});
+	
+	var multiList = new Alipw.List({
+		renderTo:"#wrapper_2",
+		multipleSelection:true,
+		store:new Alipw.DataStore({
+			data:[
+				{
+					text:'list item 1',
+					data:'1'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				},{
+					text:'list item 2',
+					data:'2'
+				},{
+					text:'list item 3',
+					data:'3'
+				}
+			]
+		}),
+		width:300,
+		maxHeight:200
+	});
+	
+	multiList.addEventListener('itemclick',function(e){
+		//alert(e.index);
+	});
+});
+</script>
+</head>
+<body>
+<div>Single Selection List</div>
+<div id="wrapper" style="padding:10px;"></div>
+<div>Multiple Selection List</div>
+<div id="wrapper_2" style="padding:10px;"></div>
+</body>
+</html>

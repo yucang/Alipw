@@ -1,0 +1,9 @@
+.alipw-slideview{ position:relative; display:block; font:12px/120% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; overflow:hidden;}
+.alipw-slideview-scrollwrap{ position:absolute; width:100000px;}
+.alipw-slideview-subview{ float:left; overflow:hidden;}
+.alipw-slideview-index{ position:absolute; bottom:0; right:0; height:18px; padding:0 3px 3px 0;}
+.alipw-slideview-index-bg{ position:absolute; bottom:0; height:24px; width:100%;}
+.alipw-slideview-index a{font:12px/14px Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; display:block; float:left; height:14px; width:20px; text-align:center; padding:2px 0 2px 0; text-decoration:none; color:#333; margin-left:2px; outline:none; overflow:hidden;}
+.alipw-slideview-index a:hover{ text-decoration:none; color:#333;}
+.alipw-slideview-index a.alipw-slideview-index-selected,
+.alipw-slideview-index a.alipw-slideview-index-selected:hover{}

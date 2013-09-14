@@ -1,0 +1,40 @@
+/*button*/
+a.alipw-button{ color:#333; font:12px/120% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; text-decoration:none; text-align:center; display:inline-block; *display:inline; *zoom:1; outline:none;}
+a.alipw-button:hover{ zoom:1; color:#333; font-size:12px; text-decoration:none; display:inline-block; outline:none;}
+.alipw-button-wrap{ display:block; float:left;}
+a.alipw-button table{ float:left; border-collapse:collapse; cursor:pointer}
+a.alipw-button table tr td{ background-image:url(../images/sprite-button-common.gif); font-size:0; overflow:hidden; line-height:0; padding:0; margin:0; cursor:pointer; vertical-align:middle;}
+
+a.alipw-button table tr.alipw-button-top{}
+a.alipw-button table tr.alipw-button-top td.alipw-button-left{ background-position:left 0; background-repeat:no-repeat;}
+a.alipw-button table tr.alipw-button-top td.alipw-button-center{ background-position:0 -69px; background-repeat:repeat-x;}
+a.alipw-button table tr.alipw-button-top td.alipw-button-right{ background-position:right -0px; background-repeat:no-repeat;}
+
+a.alipw-button:hover table tr.alipw-button-top td.alipw-button-left{ background-position:left -139px; background-repeat:no-repeat;}
+a.alipw-button:hover table tr.alipw-button-top td.alipw-button-center{ background-position:0 -208px; background-repeat:repeat-x;}
+a.alipw-button:hover table tr.alipw-button-top td.alipw-button-right{ background-position:right -139px; background-repeat:no-repeat;}
+
+a.alipw-button table tr.alipw-button-middle{}
+a.alipw-button table tr.alipw-button-middle td.alipw-button-left{ background-position:left -3px; background-repeat:no-repeat;}
+a.alipw-button table tr.alipw-button-middle td.alipw-button-center{ background-position:0 -72px; background-repeat:repeat-x; text-align:center;}
+a.alipw-button table tr.alipw-button-middle td.alipw-button-right{ background-position:right -3px; background-repeat:no-repeat;}
+
+a.alipw-button:hover table tr.alipw-button-middle td.alipw-button-left{ background-position:left -142px; background-repeat:no-repeat;}
+a.alipw-button:hover table tr.alipw-button-middle td.alipw-button-center{ background-position:0 -211px; background-repeat:repeat-x;}
+a.alipw-button:hover table tr.alipw-button-middle td.alipw-button-right{ background-position:right -142px; background-repeat:no-repeat;}
+
+a.alipw-button table tr.alipw-button-bottom{}
+a.alipw-button table tr.alipw-button-bottom td.alipw-button-left{ background-position:left -63px; background-repeat:no-repeat;}
+a.alipw-button table tr.alipw-button-bottom td.alipw-button-center{ background-position:0 -132px; background-repeat:repeat-x;}
+a.alipw-button table tr.alipw-button-bottom td.alipw-button-right{ background-position:right -63px; background-repeat:no-repeat;}
+
+a.alipw-button:hover table tr.alipw-button-bottom td.alipw-button-left{ background-position:left -202px; background-repeat:no-repeat;}
+a.alipw-button:hover table tr.alipw-button-bottom td.alipw-button-center{ background-position:0 -271px; background-repeat:repeat-x;}
+a.alipw-button:hover table tr.alipw-button-bottom td.alipw-button-right{ background-position:right -202px; background-repeat:no-repeat;}
+
+
+a.alipw-button table tr td.alipw-button-left{ width:3px; height:3px;}
+a.alipw-button table tr td.alipw-button-center{}
+a.alipw-button table tr td.alipw-button-right{ width:3px; height:3px;}
+a.alipw-button .alipw-button-text{ font-size:12px; line-height:130%; padding:0 5px; display:inline-block; zoom:1; *display:inline; vertical-align:middle;}
+a.alipw-button .alipw-button-icon{ font-size:0; line-height:0; display:inline-block; zoom:1; *display:inline; width:16px; height:16px; vertical-align:middle;}

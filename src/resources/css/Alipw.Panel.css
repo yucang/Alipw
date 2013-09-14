@@ -1,0 +1,29 @@
+.alipw-panel{ clear:both; font:12px/120% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun;}
+.alipw-panel-wrap{ text-align:left;}
+.alipw-panel-header{ background:url(../images/sprite-grey.gif) 0 0 repeat-x; clear:both;  border:1px solid #CCC; cursor:default; zoom:1;}
+.alipw-panel-header-left{ display:block; clear:both;}
+.alipw-panel-header-right{ display:block; clear:both;}
+.alipw-panel-header-center{ display:block; clear:both; height:29px; position:relative; overflow:hidden;}
+.alipw-panel-header-buttons{ position:absolute; top:-1px; padding-right:1px; right:7px; border-bottom:1px solid #FFF; line-height:0;}
+.alipw-panel-header-text{ font-weight:bold; display:block; _display:inline; float:left; margin:7px 0 0 7px; position:relative;}
+.alipw-panel-header-text-fore{ position:absolute; left:0; top:0; font-weight:bold; color:#333; white-space:nowrap}
+.alipw-panel-header-text-shadow{ position:absolute; left:1px; top:1px; font-weight:bold; color:#FFF; white-space:nowrap}
+.alipw-panel-body-wrap{ *zoom:1;}
+.alipw-panel-body{ clear:both; border:1px solid #CCC; border-top:none; background:#FFF;}
+.alipw-panel-body-content{ overflow:auto; margin:0 auto; *position:relative;*left:0;*top:0; *zoom:1}
+.alipw-panel-body-buttonbar{ background:#EBEBEB; border-top:1px solid #CCC; padding:5px 2px; line-height:0; white-space:nowrap; word-wrap:normal; overflow:hidden;}
+
+.alipw-panel-footer{ clear:both;}
+.alipw-panel-footer-left{ display:block; clear:both;}
+.alipw-panel-footer-right{ display:block; clear:both;}
+.alipw-panel-footer-center{ display:block; clear:both;}
+
+.alipw-panel-noheader .alipw-panel-header{ display:none;}
+.alipw-panel-noheader .alipw-panel-body{ border-top:1px solid #999;}
+
+.button-alipw-panel-header-grey table tr td{ background-image:url(../images/sprite-button-window-headerBtn-grey.gif)!important;}
+.button-alipw-panel-header-red table tr td{ background-image:url(../images/sprite-button-window-headerBtn-red.gif)!important;}
+.icon-alipw-panel-closeBtn{ background:url(../images/iconSprite.gif) -7px -7px no-repeat;}
+.icon-alipw-panel-maximizeBtn{ background:url(../images/iconSprite.gif) -7px -147px no-repeat;}
+.icon-alipw-panel-minimizeBtn{ background:url(../images/iconSprite.gif) -7px -219px no-repeat;}
+.icon-alipw-panel-restoreBtn{ background:url(../images/iconSprite.gif) -7px -78px no-repeat;}

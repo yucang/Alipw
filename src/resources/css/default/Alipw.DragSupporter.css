@@ -1,0 +1,4 @@
+.alipw-theme-default .alipw-component-dragging{ opacity:0.7; filter:alpha(opacity=70);}
+
+.alipw-theme-default .alipw-dragproxy{ opacity:0.7; filter:alpha(opacity=70); position:absolute;}
+.alipw-theme-default .alipw-dragproxy .alipw-bordercontainer-wrap{ border:1px dashed #999; background:#CCC;}

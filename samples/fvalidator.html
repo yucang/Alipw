@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Title</title>
+<meta charset="UTF-8"/>
+</head>
+<body>
+<style>
+dl{ width:900px; margin:10px auto; list-style:none; font:12px/18px "Microsoft YaHei";}
+dt{ padding-left:70px; font:bold 14px/22px 'Microsoft YaHei';}
+dd{ line-height:30px;}
+label{ display:inline-block; width:80px; text-align:right; vertical-align:middle;}
+input{ vertical-align:middle;}
+em{ font-style:normal;}
+.fred{ color:red;}
+.hide{ display:none;}
+</style>
+<form id="form_foo" action="">
+<dl>
+	<dt>表单校验类用例</dt>
+	<dd><label for="ipt1"><em class="fred">*</em>表单1：</label><input type="text" id="ipt1"/></dd>
+	<dd><label for="ipt2"><em id="em_ipt2" class="fred">*</em>表单2：</label><input type="text" id="ipt2" value="999"/></dd>
+	<dd><label for="ipt3"><em id="em_ipt3" class="fred hide">*</em>表单3：</label><input type="text" id="ipt3"/><span id="t_ipt3" class="tip-normal"></span></dd>
+	<dd><label for="ipt4">表单4：</label><input type="text" id="ipt4"/></dd>
+	<dd><label for="ipt5">表单5：</label><input type="text" id="ipt5" value="888"/></dd>
+	<dd><label for="ipt6"><em class="fred">*</em>表单6：</label><input type="text" id="ipt6" value="6666"/></dd>
+	<dd><label for="ipt7"><em class="fred">*</em>表单7：</label><input type="text" id="ipt7"/></dd>
+	<dd id="li_oprbox">
+		<label>&nbsp;</label><button id="btn_submit" type="button">提交</button>
+		<button id="btn_submit_uv" type="button" title="未通过校验仍执行回调">提交(执行回调)</button>
+		<button id="btn_remove" type="button">删除表单2校验</button>
+		<button id="btn_modify" type="button">修改表单3校验</button>
+		<button id="btn_add" type="button">添加表单4校验</button>
+		<button id="btn_check" type="button">校验表单5</button>
+		<button id="btn_check_cback" type="button">校验表单5执行回调</button>
+		<button id="btn_checkAll" type="button">checkAll</button>
+	</dd>
+</dl>
+</form>
+<script src="http://static.aliyun.dev/js/lib/alipw/classes/alipw-base.js" type="text/javascript"></script>
+<!-- 
+ -->
+<script src="http://static.aliyun.dev/js/plugin/fvalidator/jquery.Fvalidator.js" type="text/javascript"></script>
+<script type="text/javascript">
+Alipw.importClass('Alipw.Msg', 'Alipw.FValidator');
+Alipw.onReady(function(){
+	var fv	= 
+		//new Fv({
+		new Alipw.V({
+		items:[{
+			item:document.getElementById('ipt1'),
+			rule:[/^\d+/, /abc/, function(v){
+				return v == '999abc' ? true:false;
+			}],
+			msg:{
+				normal:'请您输入：999abc'
+			}
+		},{
+			item:'#ipt2',
+			noRepeat:false,
+			rule:['timeout', 'chars'],
+			ajax:function(value, cback){
+				$.ajax({
+					url:'ajax.php',
+					data:{value:value},
+					dataType:'json',
+					success:function(json){
+						cback(json.code > 0, json.msg);
+					}
+				});
+			},
+			msg:{
+				normal:'大于1000'
+			}
+		},{
+			item:'#ipt3',
+			tip:'#t_ipt3',
+			require:false,
+			rule:'number100_',
+			msg:{
+				normal:'请输入 >=100的数字'
+			}
+		},{
+			item:'#ipt5',
+			require:false,
+			noRepeat:false,
+			ajax:function(value, cback){
+				$.ajax({
+					url:'ajax.php',
+					data:{value:value},
+					dataType:'json',
+					success:function(json){
+						cback(json.code > 0, json.msg);
+					}
+				});
+			},
+			msg:{
+				normal:'大于1000'
+			}
+		},{
+			item:'#ipt6',
+			rule:['timeout', 'chars'],
+			ajax:function(value, cback){
+				$.ajax({
+					url:'ajax.php',
+					data:{value:value},
+					dataType:'json',
+					success:function(json){
+						cback(json.code > 0, json.msg);
+					}
+				});
+			},
+			msg:{
+				normal:'大于1000'
+			}
+		},{
+			item:'#ipt7',
+			rule:'number',
+			msg:{
+				normal:'请填入数字'
+			}
+		}],
+		rules:{
+			number:/\d+/,
+			//大于等于100
+			number100_:function(v){
+				return v >= 100 ? true:false; 
+			},
+			//小于等于1000
+			number_1000:function(v){
+				return v <= 1000 ? true:false; 
+			},
+			chars:/.+/,
+			timeout:/^[1-9]\d*$/,
+			port1_65535_fn:function(v){return v != 5 ? true:false;}
+		},
+		//非重复校验
+		noRepeat:true
+	});
+	function ajax_check(value, cback){
+		$.ajax({
+			url:'http://alipw.aliyun.ued/ajax.php',
+			data:{value:value},
+			dataType:'json',
+			success:function(json){
+				cback(json.code > 0, json.msg);
+			}
+		});
+	}
+	function _tip(msg, isError){
+		msg	= msg || '操作失败，请重试！';
+		var _cfg	= isError ? {timeout:4000, iconCls:'alipw-icon-msg-error'}:{timeout:2000};
+		Alipw.Msg.tip(msg, _cfg);
+	}
+	$(function(){
+		$('#li_oprbox').delegate('button', 'click', function(){
+			var bid	= $(this).attr('id');
+			switch(bid){
+				//增
+				case 'btn_add':
+					fv.add({
+						item:'#ipt4',
+						require:false,
+						rule:'chars'
+					});
+					break;
+				//删
+				case 'btn_remove':
+					$('#em_ipt2').fadeOut();
+					fv.remove(document.getElementById('ipt2'));
+					break;
+				//改
+				case 'btn_modify':
+					$('#em_ipt3').fadeIn();
+					fv.modify({
+						item:'#ipt3',
+						require:true,
+						rule:['number100_', 'number_1000'],
+						msg:{
+							normal:'请输入100<= 且 <=1000的数字'
+						}
+					});
+					break;
+				//单独校验表单5
+				case 'btn_check':
+					Alipw.Msg.alert('表单5校验结果', fv.check('#ipt5'));
+					break;
+				//单独校验表单5，针对ajax校验项执行回调
+				case 'btn_check_cback':
+					Alipw.Msg.alert('表单5校验结果', fv.check('#ipt5', function(bool){
+						_tip('Ajax校验结果：'+ bool, !bool);
+					}));
+					break;
+				//checkAll
+				case 'btn_checkAll':
+					Alipw.Msg.alert('checkAll', '全部校验结果：'+ fv.checkAll() +'<br/>全部校验结果：'+ fv.checkAll(true) +'（包含pending状态，有校验项未通过时只为false）');
+					break;
+				//校验未通过执行回调
+				case 'btn_submit_uv':
+				fv.v2c(function(bool){
+						bool ? $('#form_foo').submit():_tip('校验未通过执行回调', !bool);
+					}, true);
+					break;
+				//提交
+				default:
+					fv.v2c(function(bool){
+						$('#form_foo').submit();
+					});
+			}
+		});
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Histroy</title>
+<script type="text/javascript">
+Alipw.importClass(
+	'Alipw.History',
+	'Alipw.Button'
+);
+Alipw.onReady(function(){
+	Alipw.History.init();
+	var pageTokenHandler = function(e){
+		if(e.token == 'p1'){
+			$('#page_wrap').text('page 1');
+		}else if(e.token == 'p2'){
+			$('#page_wrap').text('page 2');
+		}else if(e.token == 'p3'){
+			$('#page_wrap').text('page 3');
+		}else{
+			$('#page_wrap').text('Default Page');
+		};
+	};
+	Alipw.History.addEventListener('change',pageTokenHandler);
+	pageTokenHandler({token:Alipw.History.getToken()});
+	
+	var btn1 = new Alipw.Button({
+		label:'go to page 1',
+		inlineStyle:{
+			'margin-right':'5px'
+		},
+		handler:function(){
+			$('#page_wrap').text('page 1');
+			Alipw.History.add('p1');
+		}
+	});
+	
+	var btn2 = new Alipw.Button({
+		label:'go to page 2',
+		inlineStyle:{
+			'margin-right':'5px'
+		},
+		handler:function(){
+			$('#page_wrap').text('page 2');
+			Alipw.History.add('p2');
+		}
+	});
+	
+	var btn3 = new Alipw.Button({
+		label:'go to page 3',
+		inlineStyle:{
+			'margin-right':'5px'
+		},
+		handler:function(){
+			$('#page_wrap').text('page 3');
+			Alipw.History.add('p3');
+		}
+	});
+	
+	var btn_back = new Alipw.Button({
+		label:'previous',
+		inlineStyle:{
+			'margin-right':'5px'
+		},
+		handler:function(){
+			Alipw.History.back();
+		}
+	});
+	
+	var btn_forward = new Alipw.Button({
+		label:'forward',
+		handler:function(){
+			Alipw.History.forward();
+		}
+	});
+	
+	
+	
+	
+});
+</script>
+</head>
+<body style="text-align:center;">
+
+<div id="page_wrap" style="padding:30px; height:24px; font-size:20px; font-weight:bold; text-align:center;">
+
+</div>
+
+</body>
+</html>

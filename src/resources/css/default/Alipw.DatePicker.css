@@ -1,0 +1,22 @@
+.alipw-datepicker{}
+.alipw-datepicker-wrap{ }
+.alipw-datepicker-body-wrap{ }
+.alipw-datepicker-navbar{ }
+.alipw-datepicker-navbar-info{ }
+.alipw-datepicker-navbar-btn-prevyear{ background:url(../images/arrow-1-left.gif) center center no-repeat;}
+.alipw-datepicker-navbar-btn-prevmonth{ background:url(../images/arrow-1-left.gif) center center no-repeat;}
+.alipw-datepicker-navbar-btn-nextyear{ background:url(../images/arrow-1-right.gif) center center no-repeat;}
+.alipw-datepicker-navbar-btn-nextmonth{ background:url(../images/arrow-1-right.gif) center center no-repeat;}
+.alipw-datepicker-navbar-btn-prevyear:hover,
+.alipw-datepicker-navbar-btn-prevmonth:hover,
+.alipw-datepicker-navbar-btn-nextyear:hover,
+.alipw-datepicker-navbar-btn-nextmonth:hover{ opacity:0.6; filter:alpha(opacity:60);}
+
+.alipw-datepicker-body{}
+.alipw-datepicker-body table{ }
+.alipw-datepicker-body table th,td{}
+.alipw-datepicker-body table th{ }
+.alipw-datepicker-body table td{ }
+.alipw-datepicker-body table td.alipw-datepicker-lastmonth,
+.alipw-datepicker-body table td.alipw-datepicker-nextmonth{ }
+.alipw-datepicker-body table td.alipw-datepicker-today{ }

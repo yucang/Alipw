@@ -1,0 +1,4 @@
+.alipw-listitem{ display:block; font:12px/120% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; cursor:pointer; padding:5px 7px; *zoom:1; white-space:nowrap; word-break:normal;}
+.alipw-listitem-over{ background:#B2E1FF;}
+.alipw-listitem-down{ background:#7FCEFF;}
+.alipw-listitem-selected{ background:#7FCEFF;}

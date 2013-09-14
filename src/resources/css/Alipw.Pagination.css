@@ -1,0 +1,7 @@
+.alipw-pagination{ font:12px/15px Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; height:24px;}
+.alipw-pagination a{ font:12px/15px Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; display:inline-block; *display:inline; *zoom:1; height:15px; color:#333; background:#FFF; padding:3px 7px; border:1px solid #CCC; text-decoration:none; margin:0 2px; vertical-align:middle;}
+.alipw-pagination a.alipw-pagination-hover{}
+.alipw-pagination a.alipw-pagination-current{ cursor:default;}
+.alipw-pagination-ellipsis{ display:inline-block; *display:inline; *zoom:1;verticl-align:middle;}
+.alipw-pagination-info{ display:inline-block; *display:inline; *zoom:1; height:15px; color:#333; background:#EBEBEB; color:#999; padding:3px 7px; border:1px solid #CCC; text-decoration:none; margin:0 2px; vertical-align:middle;}
+.alipw-pagination-jump-input{ display:inline-block; *display:inline; *zoom:1; height:15px; color:#333; background:#FFF; color:#333; padding:3px 0; border:1px solid #CCC; margin:0 2px; vertical-align:middle;font:12px/15px Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; text-align:center; width:45px;}

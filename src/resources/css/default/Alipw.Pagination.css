@@ -1,0 +1,6 @@
+.alipw-theme-default .alipw-pagination{}
+.alipw-theme-default .alipw-pagination a{ border-color:#CCC;}
+.alipw-theme-default .alipw-pagination a.alipw-pagination-hover{ background:#EBEBEB;}
+.alipw-theme-default .alipw-pagination a.alipw-pagination-current{ background:#CCC; border-color:#666;}
+.alipw-theme-default .alipw-pagination-ellipsis{ }
+.alipw-theme-default .alipw-pagination-info{}

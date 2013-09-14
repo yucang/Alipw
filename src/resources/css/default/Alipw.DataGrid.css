@@ -1,0 +1,2 @@
+.alipw-theme-default .alipw-datagrid-thead th,
+.alipw-theme-default .alipw-datagrid-tfoot th{ padding: 5px 10px; height: 20px; background: #EEE url('../images/sprite-grey.gif') repeat-x 0 0; font-size: 12px; color: #333; text-shadow: 1px 1px #FFF; text-align: left; border: 1px solid #999;  }

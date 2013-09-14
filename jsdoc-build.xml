@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Alipw Documentation Build" default="output" basedir="">
+    <description>Alipw Documentation Build</description>
+	<property name="doc" location="docs" />
+	<property name="src" location="src" />
+	<property name="toollib" location="compiler" />
+    <property name="charset" value="utf-8"/>
+
+	<target name="output">
+	    <taskdef name="jsdoctoolkit" classname="uk.co.darrenhurley.ant.tasks.JsDocToolkit" classpath="${toollib}/jsdoc-toolkit/jsdoc-toolkit-ant-task-1.1.2.jar;${toollib}/jsdoc-toolkit/jsrun.jar" />
+	    <jsdoctoolkit jsdochome="${toollib}/jsdoc-toolkit/" template="rainy" outputdir="${doc}" inputdir="${src}" />
+	</target>
+</project>

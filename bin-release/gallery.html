@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Gallery</title>
+<script type="text/javascript">
+Alipw.importClass("Alipw.Gallery");
+Alipw.onReady(function(){
+	var gallery = new Alipw.Gallery({
+		renderTo:"galleryWrapper",
+		width:800,
+		height:500,
+		thumbWidth:60,
+		thumbHeight:60,
+		maxDisplayPage:4,
+		dataProxy:new Alipw.DataProxy({
+			total:30,
+			limit:8,
+			url:"ajax-demo.html"
+		})
+	});
+});
+</script>
+</head>
+<body>
+<div id="galleryWrapper"></div>
+</body>
+</html>

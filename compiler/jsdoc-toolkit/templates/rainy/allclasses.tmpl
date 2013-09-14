@@ -1,0 +1,9 @@
+<div class="class-index-inner">
+<for each="thisClass" in="data">
+{!
+	if (thisClass.alias != "_global_") {
+		output += '<a hidefocus="true" href="' + thisClass.alias + '" class_name="' + thisClass.alias + '">' + thisClass.alias + '</a>';
+	}
+!}
+</for>
+</div>

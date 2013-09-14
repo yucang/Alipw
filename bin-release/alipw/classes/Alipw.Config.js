@@ -1,0 +1,1 @@
+Alipw.Config=function(){var b=new Object();var a={set:function(d,c){if(!b[d]){b[d]=new Object()}Alipw.apply(b[d],c);a.applySettings(d)},get:function(c){return b[c]},applySettings:function(c){var d=Alipw.getObjectByName(c);if(d){if(d.prototype){Alipw.apply(d.prototype,b[c])}else{Alipw.apply(d,b[c])}}}};return a}();

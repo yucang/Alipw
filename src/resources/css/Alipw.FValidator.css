@@ -1,0 +1,5 @@
+/***表单校验样式***/
+.alipw-tip-normal, .alipw-tip-empty, .alipw-tip-right, .alipw-tip-error, .alipw-tip-ajaxError, .alipw-tip-pending{display:inline-block;*display:inline;*zoom:1; vertical-align:middle!important; margin-left:5px; padding:0 5px; height:22px!important; line-height:22px!important; color:#13A821; font-size:12px!important;}
+.alipw-tip-empty, .alipw-tip-right, .alipw-tip-error, .alipw-tip-ajaxError, .alipw-tip-pending{ padding-left:25px!important; color: #EE4F11; background:url(../images/icon-fv.gif) no-repeat 0 -30px!important;}
+.alipw-tip-pending{ color:#666; background:url(../images/icon-wait.gif) no-repeat 0 center!important;}
+.alipw-tip-right{ color:#13A821; background-position:0 0!important;}

@@ -1,0 +1,11 @@
+.alipw-validator{ font:12px/100% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; padding:0 0 0 10px;}
+.alipw-validator-wrap{ float:left; min-height:12px; _height:12px; padding:4px 0;}
+.alipw-validator-wrap-correct .alipw-validator-errorMsg{ display:none;}
+.alipw-validator-wrap-correct .alipw-validator-pendingMsg{ display:none;}
+.alipw-validator-wrap-error .alipw-validator-correctMsg{ display:none;}
+.alipw-validator-wrap-error .alipw-validator-pendingMsg{ display:none;}
+.alipw-validator-wrap-pending .alipw-validator-correctMsg{ display:none;}
+.alipw-validator-wrap-pending .alipw-validator-errorMsg{ display:none;}
+.alipw-validator-wrap-error{ color:#C00; padding-left:16px; background:url(../images/cross.gif) 0 center no-repeat;}
+.alipw-validator-wrap-correct{ color:#F60; padding-left:16px; background:url(../images/tick.gif) 0 center no-repeat;}
+.alipw-validator-wrap-pending{ color:#F60; padding-left:16px; background:url(../images/pending_validator.gif) 0 center no-repeat;}

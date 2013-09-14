@@ -1,0 +1,1 @@
+Alipw.WinProxy=function(){var a=new Alipw.Nonvisual({autoInit:false});return a}();

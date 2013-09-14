@@ -1,0 +1,8 @@
+.alipw-taskbaritem{ display:block; float:left; font:12px/120% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; *zoom:1; margin:5px 5px 0 0; cursor:default;}
+.alipw-taskbaritem-wrap{ border:1px solid #CCC; background:#EBEBEB; padding:4px 8px;}
+.alipw-taskbaritem-body-content{ }
+.alipw-taskbaritem-text{ display:block; white-space:nowrap; word-wrap:normal; overflow:hidden; text-overflow:ellipsis; width:100%;}
+.alipw-taskbaritem-over{ }
+.alipw-taskbaritem-down{ }
+.alipw-taskbaritem-actived{}
+.alipw-taskbaritem-actived .alipw-taskbaritem-wrap{ background:#CCC;}

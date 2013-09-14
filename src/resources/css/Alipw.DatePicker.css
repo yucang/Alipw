@@ -1,0 +1,21 @@
+.alipw-datepicker{ position:absolute; overflow:hidden; *zoom:1; font:12px/120% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; color:#333;}
+.alipw-datepicker-wrap{ border:1px solid #CCC; background:#FFF; padding:3px;}
+.alipw-datepicker-body-wrap{ border:1px solid #CCC; background:#FFF; padding:3px;}
+.alipw-datepicker-navbar{ height:20px; text-align:center; padding-top:5px; position:relative;}
+.alipw-datepicker-navbar-info{ font-weight:bold;}
+.alipw-datepicker-navbar-btn-prevyear{ position:absolute; left:5px; top:5px; width:16px; height:16px; background:url(../images/arrow-1-left.gif) center center no-repeat;}
+.alipw-datepicker-navbar-btn-prevmonth{ position:absolute; left:30px; top:5px; width:16px; height:16px; background:url(../images/arrow-1-left.gif) center center no-repeat;}
+.alipw-datepicker-navbar-btn-nextyear{ position:absolute; right:5px; top:5px; width:16px; height:16px; background:url(../images/arrow-1-right.gif) center center no-repeat;}
+.alipw-datepicker-navbar-btn-nextmonth{ position:absolute; right:30px; top:5px; width:16px; height:16px; background:url(../images/arrow-1-right.gif) center center no-repeat;}
+
+.alipw-datepicker-body{ *zoom:1}
+.alipw-datepicker-body table{ border-collapse:collapse; width:100%;}
+.alipw-datepicker-body table th,
+.alipw-datepicker-body table td{ text-align:center; vertical-align:middle;}
+.alipw-datepicker-body table th{ padding:3px 3px 6px 3px; color:#666;}
+.alipw-datepicker-body table td{ padding:3px; color:#333; cursor:pointer;}
+.alipw-datepicker-body table td.alipw-datepicker-lastmonth,
+.alipw-datepicker-body table td.alipw-datepicker-nextmonth{ color:#999;}
+.alipw-datepicker-body table td.alipw-datepicker-today{ background:#DFEAF8; color:#000;}
+.alipw-datepicker-body table td.alipw-datepicker-cell-over{ background:#EDF5FE;}
+.alipw-datepicker-body table td.alipw-datepicker-cell-disabled{ color:#DDD; background:#FFF; cursor:default;}

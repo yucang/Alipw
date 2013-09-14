@@ -1,0 +1,1 @@
+Alipw.utils.JSON=function(){var a={encode:function(b){return jQuery.parseJSON(b)},decode:function(c,e){if(!Alipw.isSet(e)){e=window.escape}var d=new Array();for(var b in c){d.push('"'+b+'":'+((typeof(c[b])=="object"&&Alipw.isSet(c[b]))?this.decode(c[b]):'"'+e(c[b])+'"'))}return"{"+d.join(",")+"}"}};return a}();

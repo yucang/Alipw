@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Alipw Compress" default="publish" basedir="">
+	<basename property="dirname" file="${basedir}"/> 
+	<property name="doc" location="docs" />
+	<property name="src" location="src" />
+	<property name="baselib" location="baselib" />
+	<property name="toollib" location="compiler" />
+	<property name="samples" location="samples" />
+	<property name="release" location="bin-release" />
+	<property name="release.lib" location="${release}/alipw" />
+	<property name="release.baselib" location="${release}/alipw/baselib" />
+	<property name="publish" location="../alipw_preview_${dirname}/WebContent" />
+    <property name="charset" value="utf-8"/>
+	
+	<target name="compress">
+		<apply executable="java" parallel="false" verbose="true" dest="${release.lib}/">
+			<fileset dir="${release.lib}/" includes="**/*.js" />
+			<arg line="-jar" />
+			<arg path="${toollib}/yuicompressor.jar"/>
+			<arg line="--charset utf-8" />
+			<srcfile />
+			<arg line="-o" />
+			<mapper type="glob" from="*.js" to="*-min.js" />
+			<targetfile />
+		</apply>
+		
+		<!-- Replace Existing JS -->		                           		
+		<move todir="${release.lib}/" overwrite="true">
+			<fileset dir="${release.lib}/" includes="**/*.js" />
+			<mapper type="glob" from="*-min.js" to="*.js"/>
+		</move>
+		
+		<apply executable="java" parallel="false" verbose="true" dest="${release.lib}/">
+			<fileset dir="${release.lib}/" includes="**/*.css" />
+			<arg line="-jar" />
+			<arg path="${toollib}/yuicompressor.jar"/>
+			<arg line="--charset utf-8" />
+			<srcfile />
+			<arg line="-o" />
+			<mapper type="glob" from="*.css" to="*-min.css" />
+			<targetfile />
+		</apply>
+		
+		<!-- Replace Existing CSS -->		                           		
+		<move todir="${release.lib}/" overwrite="true">
+			<fileset dir="${release.lib}/" includes="**/*.css" />
+			<mapper type="glob" from="*-min.css" to="*.css"/>
+		</move>
+	</target>
+	
+	<target name="publish" depends="compress">
+        <copydir dest="${publish}" src="${release}"></copydir>
+    </target>
+</project>

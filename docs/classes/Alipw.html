@@ -1,0 +1,955 @@
+
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Singleton Class Alipw
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<div class="description">
+				
+				
+				
+								
+				
+					<div class="row">
+						<strong>Defined in: </strong> <a class="link-source-file" basehref="/classes/src/Alipw.js.html" href="#" target="_blank">Alipw.js</a>.
+					</div>
+				
+				
+					<div class="row">
+						<strong>Author: </strong> zhangwen.cao[zhangwen.cao@aliyun-inc.com].
+					</div>
+				
+				
+				<div class="row">
+				Alipw核心类（单态），同时也是所有类的命名空间。
+				</div>
+				
+					
+					
+					
+					
+					
+					
+					
+					
+				
+			</div>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<div class="summaryTable">
+			<table summary="A summary of the constructor documented in the class Alipw.">
+				<caption>Singleton Class Summary</caption>
+				<thead>
+					<tr>
+						<!--
+						<th scope="col" width="100"></th>
+						-->
+						<th scope="col">
+							
+							
+								Class Name and Description
+							
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<!--
+						<td class="attributes">&nbsp;</td>
+						-->
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b>Alipw</b>
+							</div>
+							<div class="description">Alipw核心类（单态），同时也是所有类的命名空间。</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+				
+				<div class="summaryTable">
+				<table summary="A summary of the fields documented in the class Alipw.">
+					<caption>Properties</caption>
+					<thead>
+						<tr>
+							<!--
+							<th scope="col" width="100"></th>
+							-->
+							<th scope="col">Property</th>
+							<th scope="col" width="200">Defined By</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">
+									Alipw.<b>isDOMReady : </b>
+									<span class="class_link">Boolean</span>
+								</div>
+								<div class="description">指示当前页面DOM是否准备完毕。</div>
+								
+								
+			
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				</div>
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				<div class="summaryTable">
+				<table summary="A summary of the methods documented in the class Alipw.">
+					<caption>Methods</caption>
+					<thead>
+						<tr>
+							<!--
+							<th scope="col" width="100"></th>
+							-->
+							<th scope="col">Method</th>
+							<th scope="col" width="200">Defined By</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>addModuleScript</b>(fn)
+								</div>
+								<div class="description">在Alipw.Module引用的script文件中，需要使用此方法为module添加脚本。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">fn : </span><span class="class_link">Function</span> 
+													
+													<dd>包含操作脚本的function.</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>clone</b>(object, deep)
+								</div>
+								<div class="description">克隆一个对象。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">object : </span><span class="class_link">Object</span> 
+													
+													<dd>需要被克隆的对象。</dd>
+												</li>
+											
+												<li>
+													<span class="darkblue">deep : </span><span class="class_link">Boolean</span> 
+													<i class="green">Optional</i>
+													<dd>是否为深度克隆。默认为false.</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">Object</span> <br />
+														克隆出的新对象。
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>each</b>(object, fn, scope)
+								</div>
+								<div class="description">遍历一个数组的元素或对象的所有属性。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">object : </span><span class="class_link">Object</span> 
+													
+													<dd>需要遍历的数组或对象。</dd>
+												</li>
+											
+												<li>
+													<span class="darkblue">fn : </span><span class="class_link">Function</span> 
+													
+													<dd>遍历时执行的function,该function会被传入2个形参：<ul><li>index: 索引</li><li>element: 元素或属性值</li></ul>。如果在该function中返回false,则停止对象的遍历。</dd>
+												</li>
+											
+												<li>
+													<span class="darkblue">scope : </span><span class="class_link">Object</span> 
+													
+													<dd>fn中this指针所指向的对象。</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>extend</b>(super, members)
+								</div>
+								<div class="description">继承一个类。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">super : </span><span class="class_link">Object</span> 
+													
+													<dd>需要继承的类（构造函数）</dd>
+												</li>
+											
+												<li>
+													<span class="darkblue">members : </span><span class="class_link">Object</span> 
+													<i class="green">Optional</i>
+													<dd>用于扩展子类的类成员的集合对象</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">Object</span> <br />
+														继承自指定超类的子类
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getBody</b>()
+								</div>
+								<div class="description">获取document.body的jQuery对象。</div>
+								
+								
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">jQuery Object</span> <br />
+														document.body的jQuery对象。
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getComp</b>(id)
+								</div>
+								<div class="description">通过id获取一个Alipw.Component实例。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">id : </span><span class="class_link">String</span> 
+													
+													<dd>实例的id.</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">Object</span> <br />
+														指定id的实例.若没有符合条件的实例，则返回null.
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getDoc</b>()
+								</div>
+								<div class="description">获取document的jQuery对象。</div>
+								
+								
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">jQuery Object</span> <br />
+														document的jQuery对象。
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getFileInfo</b>()
+								</div>
+								<div class="description">获取当前alipw库的引用文件信息。</div>
+								
+								
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">Object</span> <br />
+														该对象有以下属性：<ul><li>rootPath : String alipw库所在路径。</li><li>classPath : String alipw库的类文件所在路径。</li><li>mode : String base或all。</li></ul>
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getModule</b>(id)
+								</div>
+								<div class="description">通过id获取一个Alipw.Module实例。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">id : </span><span class="class_link">String</span> 
+													
+													<dd>实例的id.</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">Object</span> <br />
+														指定id的Module实例.若没有符合条件的Module实例，则返回null.
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getPath</b>()
+								</div>
+								<div class="description">获取当前alipw库所在路径。</div>
+								
+								
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">String</span> <br />
+														当前alipw库所在路径，不包含alipw目录名。
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getWin</b>()
+								</div>
+								<div class="description">获取window的jQuery对象。</div>
+								
+								
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">jQuery Object</span> <br />
+														window的jQuery对象。
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>getWinProxy</b>()
+								</div>
+								<div class="description">获取window代理对象，并自动进行初始化。某些事件会在WinProxy对象上触发，如hashChange事件。</div>
+								
+								
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link"><a href="/classes/Alipw.WinProxy.html">Alipw.WinProxy</a></span> <br />
+														Window对象的代理对象。
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>importClass</b>()
+								</div>
+								<div class="description">载入指定类。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">class1，class2，class3... : </span><span class="class_link">Object</span> 
+													
+													<dd>需要载入的类。</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>isReady</b>()
+								</div>
+								<div class="description">指示当前类加载和页面DOM是否准备完毕。</div>
+								
+								
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">Boolean</span> <br />
+														类加载和页面DOM是否准备完毕。
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>isSet</b>(value)
+								</div>
+								<div class="description">检测一个对象是否有值。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">value : </span><span class="class_link">Object</span> 
+													
+													<dd>需要检测的对象.</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+									<dl class="detailList">
+										<dt class="heading">Returns:</dt>
+										<dd>
+											<ul>
+												
+													<li>
+														<span class="class_link">Boolean</span> <br />
+														如果value为undefined或null,则返回false。反之，则返回true.
+													</li>
+												
+											</ul>
+										</dd>
+									</dl>
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>loadScript</b>(params)
+								</div>
+								<div class="description">异步加载一个javascript文件，并在加载完毕时执行指定function。此方法可实现跨域调用，但缺陷是调取的script文件会立即执行，并且无法在callback中获取已调用的文件内容。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">params : </span><span class="class_link">Object</span> 
+													
+													<dd>参数对象。包含以下可设置属性：<ul><li>url : String javascript文件的url</li><li>success : Function 读取成功后执行的callback function。</li></ul></dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>onDOMReady</b>(fn)
+								</div>
+								<div class="description">在DOM准备完毕时执行指定function。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">fn : </span><span class="class_link">Function</span> 
+													
+													<dd>需要执行的function。</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>onLoad</b>(fn)
+								</div>
+								<div class="description">在DOM、页面资源和类加载都准备完毕时执行指定function。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">fn : </span><span class="class_link">Function</span> 
+													
+													<dd>需要执行的function。</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+						<tr>
+							<!--
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							-->
+							<td class="nameDescription">
+								<div class="darkblue">Alipw.<b>onReady</b>(fn)
+								</div>
+								<div class="description">在DOM和类加载都准备完毕时执行指定function。</div>
+								
+								
+								
+									<dl class="detailList">
+									<dt class="heading">Parameters</dt>
+									<dd>
+										<ul>
+											
+												<li>
+													<span class="darkblue">fn : </span><span class="class_link">Function</span> 
+													
+													<dd>需要执行的function。</dd>
+												</li>
+											
+										</ul>
+									</dd>
+									</dl>
+								
+								
+								
+								
+								
+								
+								
+							</td>
+							<td>
+								Alipw
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				</div>
+			
+<!-- ============================== events summary ======================== -->
+			
+		</div>
+

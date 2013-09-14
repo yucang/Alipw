@@ -1,0 +1,9 @@
+.alipw-theme-default .alipw-slideview{}
+.alipw-theme-default .alipw-slideview-scrollwrap{}
+.alipw-theme-default .alipw-slideview-subview{}
+.alipw-theme-default .alipw-slideview-index{}
+.alipw-theme-default .alipw-slideview-index-bg{ background:#000; opacity:0.3; filter:alpha(opacity=30);}
+.alipw-theme-default .alipw-slideview-index a{ background:#CCC;}
+.alipw-theme-default .alipw-slideview-index a:hover{ background:#999;}
+.alipw-theme-default .alipw-slideview-index a.alipw-slideview-index-selected,
+.alipw-theme-default .alipw-slideview-index a.alipw-slideview-index-selected:hover{ background:#666; color:#FFF; font-weight:bold;}

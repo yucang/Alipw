@@ -1,0 +1,13 @@
+.alipw-resizeproxy{ position:absolute; background:url(../images/spacer.gif);}
+.alipw-resizeproxy .alipw-bordercontainer-wrap{ border:1px dashed #333;}
+
+.alipw-resizesupporter{ position:relative!important;}
+.alipw-resizesupporter-edge{ position:absolute; display:block; zoom:1; background:url(../images/spacer.gif); font-size:0; line-height:0; overflow:hidden;}
+.alipw-resizesupporter-edge-top-left{ width:5px; height:5px; left:0; top:0; cursor:se-resize;}
+.alipw-resizesupporter-edge-top-center{ width:100%; height:5px; top:0; left:0; cursor:s-resize;}
+.alipw-resizesupporter-edge-top-right{ width:5px; height:5px; right:0; top:0; cursor:sw-resize;}
+.alipw-resizesupporter-edge-middle-left{ width:5px; height:100%; left:0; top:0; cursor:e-resize;}
+.alipw-resizesupporter-edge-middle-right{ width:5px; height:100%; right:0; top:0; cursor:e-resize;}
+.alipw-resizesupporter-edge-bottom-left{  width:5px; height:5px; left:0; bottom:0; cursor:sw-resize;}
+.alipw-resizesupporter-edge-bottom-center{ width:100%; height:5px; left:0; bottom:0; cursor:s-resize;}
+.alipw-resizesupporter-edge-bottom-right{ width:5px; height:5px; right:0; bottom:0; cursor:se-resize;}

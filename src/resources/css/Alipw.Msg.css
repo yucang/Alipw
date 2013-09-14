@@ -1,0 +1,8 @@
+.alipw-msg{ padding:20px; float:left; min-height:32px; _height:32px;}
+.alipw-msg-text{ padding:6px 0 6px 42px; line-height:150%; position:relative; zoom:1;}
+.alipw-msg-icon{ position:absolute; left:0; top:0; width:32px; height:32px;}
+
+.alipw-icon-msg-warning{ background:url(../images/icon-warning-32.gif) 0 0 no-repeat;}
+.alipw-icon-msg-question{ background:url(../images/icon-question-32.gif) 0 0 no-repeat;}
+.alipw-icon-msg-error{ background:url(../images/icon-error-32.gif) 0 0 no-repeat;}
+.alipw-icon-msg-success{ background:url(../images/icon-success-32.gif) 0 0 no-repeat;}

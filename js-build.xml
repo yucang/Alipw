@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Alipw Build" default="publish" basedir="">
+    <description>Alipw Pack All</description>
+	<basename property="dirname" file="${basedir}"/> 
+	<property name="doc" location="docs" />
+	<property name="src" location="src" />
+	<property name="baselib" location="baselib" />
+	<property name="toollib" location="compiler" />
+	<property name="samples" location="samples" />
+	<property name="release" location="bin-release" />
+	<property name="release.lib" location="${release}/alipw" />
+	<property name="release.baselib" location="${release}/alipw/baselib" />
+	<property name="publish" location="../alipw_preview_${dirname}/WebContent" />
+    <property name="charset" value="utf-8"/>
+	
+    <target name="init">
+    	<mkdir dir="${release}"/>
+    	<mkdir dir="${release.lib}"/>
+    	<mkdir dir="${release.baselib}"/>
+    	<delete includeemptydirs="true">
+    		<fileset dir="${release}" includes="**/" defaultexcludes="false"/>
+    	</delete>
+    </target>
+	
+	<target name="buildStructure" depends="init">
+		<copydir dest="${release.lib}" src="${src}"></copydir>
+		<copydir dest="${release}" src="${samples}"></copydir>
+		<!--<copydir dest="${release}" src="${baselib}"></copydir>-->
+		<copydir dest="${release.baselib}" src="${baselib}"></copydir>
+		<delete includeemptydirs="true">
+    		<fileset dir="${release.lib}/resources/css/" includes="**/" defaultexcludes="false"/>
+    	</delete>
+    </target>
+	
+	<target name="concatBaseLib" depends="buildStructure">
+        <concat destfile="${release.baselib}/baselib-all.js" encoding="${charset}" outputencoding="${charset}">
+        	<path path="${baselib}/jquery/jquery.js" />
+        	<path path="${baselib}/jquery/jquery.easing.js" />
+        </concat>
+    </target>
+
+    <target name="concatBase" depends="concatBaseLib">
+        <concat destfile="${release.lib}/classes/alipw-base.js" encoding="${charset}" outputencoding="${charset}">
+        	<path path="${src}/classes/Alipw.js" />
+        	<path path="${src}/classes/Alipw.Event.js" />
+        	<path path="${src}/classes/Alipw.EventManager.js" />
+        	<path path="${src}/classes/Alipw.ClassManager.js" />
+        	<path path="${src}/classes/Alipw.Config.js" />
+        	<path path="${src}/classes/Alipw.Component.js" />
+        	<path path="${src}/classes/Alipw.ComponentManager.js" />
+        	<path path="${src}/classes/Alipw.BoxComponent.js" />
+        	<path path="${src}/classes/Alipw.Shadow.js" />
+        	<path path="${src}/classes/Alipw.Container.js" />
+        	<path path="${src}/classes/Alipw.Nonvisual.js" />
+        	<path path="${src}/classes/Alipw.WinProxy.js" />
+        	<path path="${src}/classes/Alipw.Template.js" />
+        	<path path="${src}/classes/Alipw.Module.js" />
+        </concat>
+    	<tstamp>
+    	     <format property="build_timestamp" pattern="yyyyMMddHHmmss" locale="en"/>
+    	</tstamp>
+    	<replaceregexp match="@ALIPW_BUILD@" replace="${build_timestamp}" flags="g" byline="true" file="${release.lib}/classes/alipw-base.js" encoding="${charset}" />
+    </target>
+	
+	<target name="concatAll" depends="concatBase">
+		<concat destfile="${release.lib}/classes/alipw-all.js" encoding="${charset}" outputencoding="${charset}">
+			<path path="${release.lib}/classes/alipw-base.js" />
+			<path path="${src}/classes/Alipw.BorderContainer.js" />
+			<path path="${src}/classes/Alipw.AnimationProxy.js" />
+			<path path="${src}/classes/Alipw.Gallery.js" />
+			<path path="${src}/classes/Alipw.Validator.js" />
+			<path path="${src}/classes/Alipw.ValidatorGroup.js" />
+			<path path="${src}/classes/Alipw.FValidator.js" />
+			<path path="${src}/classes/Alipw.ToolTip.js" />
+			<path path="${src}/classes/Alipw.FixedWrapper.js" />
+			<path path="${src}/classes/Alipw.ScreenMask.js" />
+			<path path="${src}/classes/Alipw.Button.js" />
+			<path path="${src}/classes/Alipw.ComboBox.js" />
+			<path path="${src}/classes/Alipw.Panel.js" />
+			<path path="${src}/classes/Alipw.Window.js" />
+			<path path="${src}/classes/Alipw.Taskbar.js" />
+			<path path="${src}/classes/Alipw.TaskbarItem.js" />
+			<path path="${src}/classes/Alipw.WindowManager.js" />
+			<path path="${src}/classes/Alipw.Msg.js" />
+			<path path="${src}/classes/Alipw.Slider.js" />
+			<path path="${src}/classes/Alipw.Scrollbar.js" />
+			<path path="${src}/classes/Alipw.ColorPicker.js" />
+			<path path="${src}/classes/Alipw.DatePicker.js" />
+			<path path="${src}/classes/Alipw.DataProxy.js" />
+			<path path="${src}/classes/Alipw.DataStore.js" />
+			<path path="${src}/classes/Alipw.DragSupporter.js" />
+			<path path="${src}/classes/Alipw.DragManager.js" />
+			<path path="${src}/classes/Alipw.ResizeSupporter.js" />
+			<path path="${src}/classes/Alipw.DataGrid.js" />
+			<path path="${src}/classes/Alipw.List.js" />
+			<path path="${src}/classes/Alipw.ListItem.js" />
+			<path path="${src}/classes/Alipw.SlideView.js" />
+			<path path="${src}/classes/Alipw.Pagination.js" />
+			<path path="${src}/classes/Alipw.utils.Base64.js" />
+			<path path="${src}/classes/Alipw.utils.Date.js" />
+			<path path="${src}/classes/Alipw.utils.Format.js" />
+			<path path="${src}/classes/Alipw.utils.JSON.js" />
+			<path path="${src}/classes/Alipw.utils.QueryString.js" />
+        </concat>
+    </target>
+	
+	<target name="concatCss" depends="concatAll">
+		<concat destfile="${release.lib}/resources/css/style.css" encoding="${charset}" outputencoding="${charset}">
+			<fileset dir="${src}/resources/css/" includes="*.css" />
+			<fileset dir="${src}/resources/css/default/" includes="*.css" />
+		</concat>
+	</target>
+	
+	<target name="clear" depends="concatCss">
+		
+	</target>
+	
+	<target name="publish" depends="clear">
+		<copydir dest="${publish}" src="${release}"></copydir>
+	</target>
+</project>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<script type="text/javascript" src="MiniProfiler.js"></script>
+<title>Pagination</title>
+<script type="text/javascript">
+Alipw.importClass("Alipw.Pagination");
+Alipw.onReady(function(){
+	var pagination = new Alipw.Pagination({
+		total:50,
+		pageSize:10,
+		maxSiblingItemNum:10,
+		showTotalInfo:true,
+		renderTo:'wrapper',
+		allowPageJump:true
+	});
+	
+	pagination.addEventListener('change',function(e){
+		//alert('Turn to page ' + e.currentTarget.currentPage);
+	});
+});
+</script>
+</head>
+<body>
+<div id="wrapper"></div>
+</body>
+</html>

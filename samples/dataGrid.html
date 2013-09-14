@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Data Grid</title>
+<script type="text/javascript">
+Alipw.importClass("Alipw.DataGrid");
+Alipw.onReady(function(){
+	var gridData = [
+			{
+				name: '尹书威',
+				gender: 'Female',
+				ext: '70922',
+				email: 'shuwei.yin@aliyun-inc.com',
+				mobile: '18611138006'
+			},
+			{
+				name: '李洁',
+				gender: 'Female',
+				ext: '70844',
+				email: 'jie.li@aliyun-inc.com',
+				mobile: '18600063213'
+			},
+			{
+				name: '陈磊',
+				gender: 'Male',
+				ext: '70913',
+				email: 'lololei.chen@aliyun-inc.com',
+				mobile: '13910828717'
+			},
+			{
+				name: '莫汝舰',
+				gender: 'Male',
+				ext: '70958',
+				email: 'rujian.morj@aliyun-inc.com',
+				mobile: '18611753905'
+			},
+			{
+				name: '曹张文',
+				gender: 'Male',
+				ext: '70704',
+				email: 'zhangwen.cao@aliyun-inc.com',
+				mobile: '15811359410'
+			},
+			{
+				name: '宗阳子',
+				gender: 'Male',
+				ext: '70730',
+				email: 'yangzi.zong@alibaba-inc.com',
+				mobile: '13581777300'
+			},
+			{
+				name: '李猛',
+				gender: 'Male',
+				ext: '70838',
+				email: 'meng.limeng@aliyun-inc.com',
+				mobile: '15811432909'
+			},
+			{
+				name: '张颖',
+				gender: 'Female',
+				ext: '70758',
+				email: 'ying.zhangyingy@alibaba-inc.com',
+				mobile: '15011438373'
+			}
+		];
+
+	var gridConfig = [{
+			name: '姓名',
+			field: 'name',
+			showValue: '<strong>{$value}</strong>'
+		},
+		{
+			name: '性别',
+			field: 'gender',
+			handlers: function( elm, values ){
+				if(values.gender == 'Male'){
+					return elm.html('男');
+				}
+				
+				return elm.html('女');
+			}
+		},
+		{
+			name: '分机',
+			field: 'ext'
+		},
+		{
+			name: '电子邮箱',
+			field: 'email'
+		},
+		{
+			name: '手机号码',
+			field: 'mobile',
+			style: {
+				color: '#000'
+			},
+			handlers: function( elm, values ){
+				var formatMobile = function(mobile){
+					if(mobile && /^(\d{3})(\d{4})(\d{4})$/.test(mobile)){
+						return mobile.replace(/^(\d{3})(\d{4})(\d{4})$/, '+86 $1-$2-$3');
+					}
+					return mobile;
+				}
+
+				elm.html(formatMobile(values.mobile));
+				elm.click(function(){
+					alert(values.mobile);
+				});
+			}
+		}];
+
+
+	var grid = new Alipw.DataGrid({
+			renderTo: 'dataGridWrapper',
+			showHeader: true,
+			showFooter: true,
+			gridConfig: gridConfig,
+			gridData: gridData
+		});
+
+	$('#update').click(function(){
+		var data = [];
+		grid.update(data);
+	});
+});
+</script>
+</head>
+<body>
+<div id="dataGridWrapper"></div>
+<a href="javascript:void(0)" id="update">grid.update</a>
+</body>
+</html>

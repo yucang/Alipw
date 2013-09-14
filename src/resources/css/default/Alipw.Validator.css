@@ -1,0 +1,3 @@
+.alipw-theme-default .alipw-validator-wrap-error{ color:#C00; padding-left:16px; background:url(../images/cross.gif) 0 center no-repeat;}
+.alipw-theme-default .alipw-validator-wrap-correct{ color:#F60; padding-left:16px; background:url(../images/tick.gif) 0 center no-repeat;}
+.alipw-theme-default .alipw-validator-wrap-pending{ color:#F60; padding-left:16px; background:url(../images/pending_validator.gif) 0 center no-repeat;}

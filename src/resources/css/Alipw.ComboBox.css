@@ -1,0 +1,25 @@
+.alipw-combobox{ font:12px/120% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; cursor:pointer; display:inline-block; *display:inline; *zoom:1; vertical-align:middle;}
+.alipw-combobox-over{}
+.alipw-combobox-wrap{ border:1px solid #CCC; background:#FFF url(../images/sprite-combo.gif) 0 0 repeat-x; *zoom:1;}
+.alipw-combobox-over .alipw-combobox-wrap{ border-color:#AFCBD4; background-position:0 -200px;}
+.alipw-combobox-expanded{}
+.alipw-combobox-expanded .alipw-combobox-wrap{ border-color:#AFCBD4; background-position:0 -200px;}
+.alipw-combobox-down{}
+.alipw-combobox-down .alipw-combobox-wrap{ border-color:#AFCBD4; background-position:0 -400px;}
+.alipw-combobox-body-content{ padding:3px 16px 3px 7px; background:url(../images/combo-arrow-down.gif) right center no-repeat; white-space:nowrap; overflow:hidden;}
+.alipw-combobox-text{ padding:1px 0 0 0; overflow:hidden; width:100%;}
+.alipw-combobox-list{ position:absolute; left:0; top:0;}
+.alipw-combobox-list .alipw-list-wrap{}
+.alipw-combobox-list-above{}
+.alipw-combobox-list-above .alipw-list-wrap{ border-bottom:none;}
+.alipw-combobox-list-above .alipw-list-footer{ border-bottom:1px solid #EBEBEB;}
+.alipw-combobox-list-underneath{}
+.alipw-combobox-list-underneath .alipw-list-wrap{ border-top:none;}
+.alipw-combobox-list-underneath .alipw-list-header{ border-top:1px solid #EBEBEB;}
+
+.alipw-combobox-disabled,
+.alipw-combobox-disabled div,
+.alipw-combobox-disabled span,
+.alipw-combobox-disabled a{ cursor:default;}
+.alipw-combobox-disabled .alipw-combobox-wrap{ opacity:0.6; filter:alpha(opacity=60);}
+.alipw-combobox-disabled .alipw-combobox-text{ color:#666;}

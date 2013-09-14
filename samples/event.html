@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Event</title>
+<script type="text/javascript">
+Alipw.importClass(
+	'Alipw.Button',
+	'Alipw.Panel'
+);
+Alipw.onReady(function(){
+	var panel = new Alipw.Panel({
+		renderTo:'btn1',
+		title:'panel'
+	});
+	
+	var btn1 = new Alipw.Button({
+		label:"Button",
+		renderTo:panel
+	});
+	
+	var handler = function(e){
+		e.preventDefault();
+	}
+	
+	panel.addEventListener('testevent',handler,panel);
+	//panel.removeEventListener('testevent',handler);
+	btn1.addEventListener('testevent',handler);
+	//btn1.addEventListener('click',handler,null,true);
+	
+	var a = btn1.fireEvent('testevent',{
+		test2:'test2'
+	},true);
+	alert(a);
+	
+	//btn1.fireEvent('click',{
+	//	test:'test'
+	//},handler,{'test1':'test1'});
+	
+	
+	//var obj = new Alipw.Nonvisual();
+	//obj.addEventListener('testbbb',handler);
+	//obj.fireEvent('testbbb',{test:'test222'});
+	
+	
+});
+</script>
+</head>
+<body>
+
+<span id="btn1" style="margin-right:10px"></span>
+<span id="btn2" style="margin-right:10px"></span>
+<span id="btn3" style="margin-right:10px"></span><br /><br />
+
+
+</body>
+</html>

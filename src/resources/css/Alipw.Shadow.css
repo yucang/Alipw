@@ -1,0 +1,19 @@
+/*shadow*/
+.alipw-ie-shadow{ overflow:hidden; background:#777;zoom:1; position:absolute;overflow:hidden;left:0;top:0;background:#000;zoom:1; FILTER: progid:DXImageTransform.Microsoft.alpha(opacity=50) progid:DXImageTransform.Microsoft.Blur(pixelradius=4);}
+.alipw-shadow{ position:absolute;}
+.alipw-shadow *{overflow:hidden;}
+.alipw-shadow *{padding:0;border:0;margin:0;clear:none;zoom:1;}
+.alipw-shadow .xstc,.alipw-shadow .xsbc{height:6px;float:left;}
+.alipw-shadow .xstl,.alipw-shadow .xstr,.alipw-shadow .xsbl,.alipw-shadow .xsbr{width:6px;height:6px;float:left;}
+.alipw-shadow .xsc{width:100%;}
+.alipw-shadow .xsml,.alipw-shadow .xsmr{width:6px;float:left;height:100%;}
+.alipw-shadow .xsmc{float:left;height:100%;background:transparent url(../images/shadow-c.png );}
+.alipw-shadow .xst,.alipw-shadow .xsb{height:6px;overflow:hidden;width:100%;}
+.alipw-shadow .xsml{background:transparent url(../images/shadow-lr.png ) repeat-y 0 0;}
+.alipw-shadow .xsmr{background:transparent url(../images/shadow-lr.png ) repeat-y -6px 0;}
+.alipw-shadow .xstl{background:transparent url(../images/shadow.png ) no-repeat 0 0;}
+.alipw-shadow .xstc{background:transparent url(../images/shadow.png ) repeat-x 0 -30px;}
+.alipw-shadow .xstr{background:transparent url(../images/shadow.png ) repeat-x 0 -18px;}
+.alipw-shadow .xsbl{background:transparent url(../images/shadow.png ) no-repeat 0 -12px;}
+.alipw-shadow .xsbc{background:transparent url(../images/shadow.png ) repeat-x 0 -36px;}
+.alipw-shadow .xsbr{background:transparent url(../images/shadow.png ) repeat-x 0 -6px;}

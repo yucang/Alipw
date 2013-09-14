@@ -1,0 +1,9 @@
+.alipw-colorpicker{ position:absolute; overflow:hidden; *zoom:1;}
+.alipw-colorpicker-statusbar{ border:1px solid #000; border-bottom:0; padding:3px; height:18px; background:#B4B4B6;}
+.alipw-colorpicker-color-preview{ height:16px; width:50px; border:1px solid #696969; float:left; overflow:hidden; font-size:0; line-height:0;}
+.alipw-colorpicker-color-info{ height:13px; float:left; margin-left:5px; font:12px/100% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; padding-top:2px;}
+.alipw-colorpicker-wrap{ border-right:1px solid #000; border-bottom:1px solid #000; background:#000; overflow:hidden; *zoom:1;}
+.alipw-colorpicker-cell{ _display:inline; border-left:1px solid #000; border-top:1px solid #000; width:11px; height:11px; float:left; font-size:0; line-height:0; overflow:hidden; cursor:pointer;}
+
+.alipw-colorpicker-cell-highlight-border{ display:none; width:9px; height:9px; border:1px solid #FFF;}
+.alipw-colorpicker-cell-hover .alipw-colorpicker-cell-highlight-border{ display:block}

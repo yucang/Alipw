@@ -1,0 +1,1 @@
+Alipw.WindowManager=function(){var b=new Array();var a={zseed:8000,register:function(c){if(c instanceof Alipw.Window){b.push(c)}},unregister:function(c){Alipw.removeItemFromArray(c,b);if(b.length==0){}}};return a}();

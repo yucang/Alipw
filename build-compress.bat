@@ -1,0 +1,1 @@
+ant -buildfile "js-compress.xml"

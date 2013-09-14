@@ -11,7 +11,7 @@ Alipw.DataStore = Alipw.extend(Alipw.Nonvisual,
 	/**
 	 * @property
 	 * @type Array
-	 * @description 数据。
+	 * @description 数据记录集。
 	 */
 	data:null,
 	constructor:function(){
@@ -26,7 +26,7 @@ Alipw.DataStore = Alipw.extend(Alipw.Nonvisual,
 	/**
 	 * @public
 	 * @description 获取数据。
-	 * @return {Array} 数据。
+	 * @return {Array} 数据记录集。
 	 */
 	getData:function(){
 		return this.data;

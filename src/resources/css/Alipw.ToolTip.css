@@ -1,2 +1,13 @@
 .alipw-tooltip{ font:12px/150% Tahoma, Helvetica, Arial, Calibri, Geneva, SimSun; position:absolute;}
 .alipw-tooltip-wrap{ border:1px solid #999; background:#FFFFE1; padding:7px; float:left;}
+.alipw-tooltip-anchormode{ position:relative}
+.alipw-tooltip-arrow{ display:none; position:absolute; width:16px; height:16px; background-image:url(../images/sprite-tooltip.gif); background-position: -99999px -99999px; background-repeat: no-repeat;}
+.alipw-tooltip-anchormode .alipw-tooltip-arrow{ display:block;}
+.alipw-tooltip-anchormode-top{ }
+.alipw-tooltip-anchormode-top .alipw-tooltip-arrow{ bottom:-16px; left:50%; margin-left:-8px; background-position:0 -16px;}
+.alipw-tooltip-anchormode-left{ }
+.alipw-tooltip-anchormode-left .alipw-tooltip-arrow{ right:-16px; top:50%; margin-top:-8px; background-position:0 -48px;}
+.alipw-tooltip-anchormode-right{ }
+.alipw-tooltip-anchormode-right .alipw-tooltip-arrow{ left:-16px; top:50%; margin-top:-8px; background-position:0 -32px;}
+.alipw-tooltip-anchormode-bottom{ }
+.alipw-tooltip-anchormode-bottom .alipw-tooltip-arrow{ top:-16px; left:50%; margin-left:-8px; background-position:0 0;}

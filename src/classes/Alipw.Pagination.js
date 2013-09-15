@@ -45,6 +45,8 @@ Alipw.Pagination = Alipw.extend(Alipw.Component,
 	},
 	renderComplete:function(updating){
 		Alipw.Pagination.superclass.renderComplete.apply(this,arguments);
+		
+		this.getPageTotal();
 		this.createPageItems_Pagination();
 		this.setCurrentPage(this.currentPage);
 		this.addEventListener('click',this.pageItemClickHandler_Pagination,this,true);

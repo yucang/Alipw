@@ -142,9 +142,6 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 		var wrap = this.el.find('.' + this.baseCls + '-wrap');
 		if(this.mode == 'anchor'){
 			wrap.addClass(this.baseCls + '-anchormode');
-			if(this.tipPosition == 'top' || this.tipPosition == 'bottom' || this.tipPosition == 'left' || this.tipPosition == 'right'){
-				wrap.addClass(this.baseCls + '-anchormode-' + this.tipPosition);
-			}
 		}
 		wrap.append('<div class="' + this.baseCls + '-arrow"></div>');
 	},
@@ -157,111 +154,21 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 	showTip:function(){
 		if(this.mode == 'anchor'){
 			(function(){
-				var x,y,rectification,anchorOffset;
 				this.show();
-				var targetPos = this.targetEl.offset();
-				var targetWidth = this.targetEl.outerWidth();
-				var targetHeight = this.targetEl.outerHeight();
-				var tipWidth = this.getWidth();
-				var tipHeight = this.getHeight();
-				var winWidth = Alipw.getWin().width();
-				var winHeight = Alipw.getWin().height();
-				var scrollLeft = Alipw.getWin().scrollLeft();
-				var scrollTop = Alipw.getWin().scrollTop();
-				var minX = 10 + scrollLeft;
-				var maxX = scrollLeft + winWidth - tipWidth - 10;
-				var minY = 10 + scrollTop;
-				var maxY = scrollTop + winHeight - tipHeight - 10;
-				var arrow = this.el.find('.' + this.baseCls + '-arrow');
-				
-				arrow.css({'left':'',top:''});
-				if(this.tipPosition == 'top'){
-					x = targetPos.left + parseInt((targetWidth - tipWidth)/2);
-					y = targetPos.top - tipHeight - this.offsetAnchor;
-					
-					if(x < minX){
-						rectification = x - minX;
-						x = minX;
-						anchorOffset = parseInt(tipWidth/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('left',anchorOffset + 'px');
-					}else if(x > maxX){
-						rectification = x - maxX;
-						x = maxX;
-						anchorOffset = parseInt(tipWidth/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('left',anchorOffset + 'px');
+				var overflow;
+				if(this.tipPosition == 'top' || this.tipPosition == 'bottom'  || this.tipPosition == 'left' || this.tipPosition == 'right'){
+					this.adjustAnchorTooltipPosition_ToolTip(this.tipPosition);
+				}else if(this.tipPosition == 'vertical'){
+					overflow = this.adjustAnchorTooltipPosition_ToolTip('top');
+					if(overflow){
+						this.adjustAnchorTooltipPosition_ToolTip('bottom');
 					}
-					
-				}else if(this.tipPosition == 'bottom'){
-					x = targetPos.left + parseInt((targetWidth - tipWidth)/2);
-					y = targetPos.top + targetHeight + this.offsetAnchor;
-					if(x < minX){
-						rectification = x - minX;
-						x = minX;
-						anchorOffset = parseInt(tipWidth/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('left',anchorOffset + 'px');
-					}else if(x > maxX){
-						rectification = x - maxX;
-						x = maxX;
-						anchorOffset = parseInt(tipWidth/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('left',anchorOffset + 'px');
-					}
-					
-				}else if(this.tipPosition == 'left'){
-					x = targetPos.left - tipWidth - this.offsetAnchor;
-					y = targetPos.top + parseInt((targetHeight - tipHeight)/2);
-					
-					if(y < minY){
-						rectification = y - minY;
-						y = minY;
-						anchorOffset = parseInt(tipHeight/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('top',anchorOffset + 'px');
-					}else if(x > maxY){
-						rectification = x - maxY;
-						x = maxY;
-						anchorOffset = parseInt(tipWidth/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('top',anchorOffset + 'px');
-					}
-				}else if(this.tipPosition == 'right'){
-					x = targetPos.left + targetWidth + this.offsetAnchor;
-					y = targetPos.top + parseInt((targetHeight - tipHeight)/2);
-					
-					if(y < minY){
-						rectification = y - minY;
-						y = minY;
-						anchorOffset = parseInt(tipHeight/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('top',anchorOffset + 'px');
-					}else if(x > maxY){
-						rectification = x - maxY;
-						x = maxY;
-						anchorOffset = parseInt(tipWidth/2) + rectification;
-						if(anchorOffset < 10){
-							anchorOffset = 10;
-						}
-						arrow.css('top',anchorOffset + 'px');
+				}else if(this.tipPosition == 'horizontal'){
+					overflow = this.adjustAnchorTooltipPosition_ToolTip('left');
+					if(overflow){
+						this.adjustAnchorTooltipPosition_ToolTip('right');
 					}
 				}
-				this.setPosition(x, y);
 			}).call(this);
 			return;
 		}
@@ -308,6 +215,143 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 		}else{
 			this.__layoutChanged = true;
 		}
+	},
+	//private
+	//return {Boolean} whether the tip overflows the visual area
+	adjustAnchorTooltipPosition_ToolTip:function(type){
+		var wrap = this.el.find('.' + this.baseCls + '-wrap');
+		
+		if(type == 'top' || type == 'bottom' || type == 'left' || type == 'right'){
+			wrap.removeClass(this.baseCls + '-anchormode-top');
+			wrap.removeClass(this.baseCls + '-anchormode-bottom');
+			wrap.removeClass(this.baseCls + '-anchormode-left');
+			wrap.removeClass(this.baseCls + '-anchormode-right');
+			wrap.addClass(this.baseCls + '-anchormode-' + type);
+		}
+		
+		var overflow = false,x,y,rectification,anchorOffset;
+		var targetPos = this.targetEl.offset();
+		var targetWidth = this.targetEl.outerWidth();
+		var targetHeight = this.targetEl.outerHeight();
+		var tipWidth = this.getWidth();
+		var tipHeight = this.getHeight();
+		var winWidth = Alipw.getWin().width();
+		var winHeight = Alipw.getWin().height();
+		var scrollLeft = Alipw.getWin().scrollLeft();
+		var scrollTop = Alipw.getWin().scrollTop();
+		var minX = 10 + scrollLeft;
+		var maxX = scrollLeft + winWidth - tipWidth - 10;
+		var minY = 10 + scrollTop;
+		var maxY = scrollTop + winHeight - tipHeight - 10;
+		var arrow = this.el.find('.' + this.baseCls + '-arrow');
+		
+		arrow.css({'left':'',top:''});
+
+		if(type == 'top'){
+			x = targetPos.left + parseInt((targetWidth - tipWidth)/2);
+			y = targetPos.top - tipHeight - this.offsetAnchor;
+			
+			if(x < minX){
+				rectification = x - minX;
+				x = minX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}else if(x > maxX){
+				rectification = x - maxX;
+				x = maxX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}
+			
+			if(y < minY){
+				overflow = true;
+			}
+			
+		}else if(type == 'bottom'){
+			x = targetPos.left + parseInt((targetWidth - tipWidth)/2);
+			y = targetPos.top + targetHeight + this.offsetAnchor;
+			if(x < minX){
+				rectification = x - minX;
+				x = minX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}else if(x > maxX){
+				rectification = x - maxX;
+				x = maxX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}
+			
+			if(y > maxY){
+				overflow = true;
+			}
+			
+		}else if(type == 'left'){
+			x = targetPos.left - tipWidth - this.offsetAnchor;
+			y = targetPos.top + parseInt((targetHeight - tipHeight)/2);
+			
+			if(y < minY){
+				rectification = y - minY;
+				y = minY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}else if(y > maxY){
+				rectification = y - maxY;
+				y = maxY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}
+			
+			if(x < minX){
+				overflow = true;
+			}
+		}else if(type == 'right'){
+			x = targetPos.left + targetWidth + this.offsetAnchor;
+			y = targetPos.top + parseInt((targetHeight - tipHeight)/2);
+			
+			if(y < minY){
+				rectification = y - minY;
+				y = minY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}else if(y > maxY){
+				rectification = y - maxY;
+				y = maxY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}
+			
+			if(x > maxX){
+				overflow = true;
+			}
+		}
+		this.setPosition(x,y);
+		
+		return overflow;
 	},
 	//private
 	refreshLayout_ToolTip:function(){

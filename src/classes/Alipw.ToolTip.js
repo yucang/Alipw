@@ -155,6 +155,10 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 		if(this.mode == 'anchor'){
 			(function(){
 				this.show();
+				if(this.__layoutChanged == true){
+					this.refreshLayout_ToolTip();
+					this.__layoutChanged = false;
+				}
 				var overflow;
 				if(this.tipPosition == 'top' || this.tipPosition == 'bottom'  || this.tipPosition == 'left' || this.tipPosition == 'right'){
 					this.adjustAnchorTooltipPosition_ToolTip(this.tipPosition);
@@ -210,8 +214,12 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 		if(this.rendered){
 			this.getBody().html(html);
 		}
+		this.refreshLayout();
+	},
+	refreshLayout:function(){
 		if(this.visible && this.rendered){
-			this.refreshLayout_ToolTip();
+			this.__layoutChanged = true;
+			this.showTip();
 		}else{
 			this.__layoutChanged = true;
 		}

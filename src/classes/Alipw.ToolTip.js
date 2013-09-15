@@ -104,6 +104,20 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 	hideEvents:["mouseout"],
 	/**
 	 * @property
+	 * @type Array
+	 * @description ToolTip对象自身的使其显示的事件。
+	 * @default ['mouseover']
+	 * */
+	tipShowEvents:["mouseover"],
+	/**
+	 * @property
+	 * @type Array
+	 * @description ToolTip对象自身的使其隐藏的事件。
+	 * @default ['mouseout']
+	 * */
+	tipHideEvents:["mouseout"],
+	/**
+	 * @property
 	 * @type String
 	 * @description 基本前缀。
 	 * @default 'alipw-tooltip'
@@ -148,8 +162,13 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 	renderComplete:function(){
 		Alipw.ToolTip.superclass.renderComplete.apply(this,arguments);
 		
-		this.addEventListener("mouseover",this.showHandler,this,true);
-		this.addEventListener("mouseout",this.hideHandler,this,true);
+		for(var i=0,len=this.tipShowEvents.length;i<len;i++){
+			this.addEventListener(this.tipShowEvents[i],this.showHandler,this,true);
+		}
+		
+		for(var i=0,len=this.tipHideEvents.length;i<len;i++){
+			this.addEventListener(this.tipHideEvents[i],this.hideHandler,this,true);
+		}
 	},
 	showTip:function(){
 		if(this.mode == 'anchor'){

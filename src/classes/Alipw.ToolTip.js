@@ -4,7 +4,6 @@
  * @author zhangwen.cao[zhangwen.cao@aliyun-inc.com]
  * @description 浮动的消息提示。
  * @demo http://aliyun-ued.com/alipw/samples/tooltip.html
- * @example
  * 
  */
 
@@ -12,21 +11,103 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 /** @lends Alipw.ToolTip.prototype */
 {
 	html:"",
+	/**
+	 * @property
+	 * @type HTML Element/HTML Selector
+	 * @description [config option]定义ToolTip的宿主对象
+	 * @default null
+	 */
 	target:null,
+	/**
+	 * @property
+	 * @type String
+	 * @description [config option]ToolTip的展现模式。可选值有'anchor'和'follow'
+	 * @default 'follow'
+	 */
+	mode:'follow',
+	/**
+	 * @property
+	 * @type String
+	 * @description [config option]ToolTip相对锚点的展现位置。此配置仅当mode为'anchor'时有效，可选值有'top','bottom','left','right','vertical','horizontal'
+	 * @default 'vertical'
+	 */
+	tipPosition:'vertical',
+	/**
+	 * @property
+	 * @type Number
+	 * @description [config option]定义ToolTip的展示延迟时间
+	 * @default 0.5
+	 */
 	showDelay:0.5,
+	/**
+	 * @property
+	 * @type Number
+	 * @description [config option]定义ToolTip的隐藏延迟时间
+	 * @default 0.2
+	 */
 	hideDelay:0.2,
-	position:"auto",
+	/**
+	 * @property
+	 * @type Boolean
+	 * @description [config option]定义是否为漂浮对象
+	 * @default true
+	 */
 	floating:true,
+	/**
+	 * @property
+	 * @type Boolean
+	 * @description [config option]定义是否显示阴影
+	 * @default true
+	 */
 	showShadow:true,
+	/**
+	 * @property
+	 * @type Number
+	 * @description [config option]定义文本区域最大宽度
+	 * @default 300
+	 */
 	textMaxWidth:300,
+	/**
+	 * @property
+	 * @type Number
+	 * @description [config option]定义ToolTip展示时水平方向与鼠标位置的偏移量
+	 * @default 0
+	 */
 	offsetX:0,
+	/**
+	 * @property
+	 * @type Number
+	 * @description [config option]定义ToolTip展示时垂直方向与鼠标位置的偏移量
+	 * @default 20
+	 */
 	offsetY:20,
 	/**
 	 * @property
-	 * @description 使该ToolTip显示的事件。默认为['mouseover']
+	 * @type Number
+	 * @description [config option]定义ToolTip展示时与锚点的距离。此配置仅当mode为anchor时有效
+	 * @default 20
+	 */
+	offsetAnchor:15,
+	/**
+	 * @property
+	 * @type Array
+	 * @description 使该ToolTip显示的事件。
+	 * @default ['mouseover']
 	 * */
 	triggerEvents:["mouseover"],
+	/**
+	 * @property
+	 * @type Array
+	 * @description 使该ToolTip隐藏的事件。
+	 * @default ['mouseout']
+	 * */
 	hideEvents:["mouseout"],
+	/**
+	 * @property
+	 * @type String
+	 * @description 基本前缀。
+	 * @default 'alipw-tooltip'
+	 * */
 	baseCls:"alipw-tooltip",
 	/**
 	 * @property
@@ -57,6 +138,12 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 	},
 	createDom:function(){
 		Alipw.ToolTip.superclass.createDom.apply(this,arguments);
+		
+		var wrap = this.el.find('.' + this.baseCls + '-wrap');
+		if(this.mode == 'anchor'){
+			wrap.addClass(this.baseCls + '-anchormode');
+		}
+		wrap.append('<div class="' + this.baseCls + '-arrow"></div>');
 	},
 	renderComplete:function(){
 		Alipw.ToolTip.superclass.renderComplete.apply(this,arguments);
@@ -65,6 +152,27 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 		this.addEventListener("mouseout",this.hideHandler,this,true);
 	},
 	showTip:function(){
+		if(this.mode == 'anchor'){
+			(function(){
+				this.show();
+				var overflow;
+				if(this.tipPosition == 'top' || this.tipPosition == 'bottom'  || this.tipPosition == 'left' || this.tipPosition == 'right'){
+					this.adjustAnchorTooltipPosition_ToolTip(this.tipPosition);
+				}else if(this.tipPosition == 'vertical'){
+					overflow = this.adjustAnchorTooltipPosition_ToolTip('top');
+					if(overflow){
+						this.adjustAnchorTooltipPosition_ToolTip('bottom');
+					}
+				}else if(this.tipPosition == 'horizontal'){
+					overflow = this.adjustAnchorTooltipPosition_ToolTip('left');
+					if(overflow){
+						this.adjustAnchorTooltipPosition_ToolTip('right');
+					}
+				}
+			}).call(this);
+			return;
+		}
+		
 		if(!this.lastPos)return;
 		
 		this.show();
@@ -107,6 +215,143 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 		}else{
 			this.__layoutChanged = true;
 		}
+	},
+	//private
+	//return {Boolean} whether the tip overflows the visual area
+	adjustAnchorTooltipPosition_ToolTip:function(type){
+		var wrap = this.el.find('.' + this.baseCls + '-wrap');
+		
+		if(type == 'top' || type == 'bottom' || type == 'left' || type == 'right'){
+			wrap.removeClass(this.baseCls + '-anchormode-top');
+			wrap.removeClass(this.baseCls + '-anchormode-bottom');
+			wrap.removeClass(this.baseCls + '-anchormode-left');
+			wrap.removeClass(this.baseCls + '-anchormode-right');
+			wrap.addClass(this.baseCls + '-anchormode-' + type);
+		}
+		
+		var overflow = false,x,y,rectification,anchorOffset;
+		var targetPos = this.targetEl.offset();
+		var targetWidth = this.targetEl.outerWidth();
+		var targetHeight = this.targetEl.outerHeight();
+		var tipWidth = this.getWidth();
+		var tipHeight = this.getHeight();
+		var winWidth = Alipw.getWin().width();
+		var winHeight = Alipw.getWin().height();
+		var scrollLeft = Alipw.getWin().scrollLeft();
+		var scrollTop = Alipw.getWin().scrollTop();
+		var minX = 10 + scrollLeft;
+		var maxX = scrollLeft + winWidth - tipWidth - 10;
+		var minY = 10 + scrollTop;
+		var maxY = scrollTop + winHeight - tipHeight - 10;
+		var arrow = this.el.find('.' + this.baseCls + '-arrow');
+		
+		arrow.css({'left':'',top:''});
+
+		if(type == 'top'){
+			x = targetPos.left + parseInt((targetWidth - tipWidth)/2);
+			y = targetPos.top - tipHeight - this.offsetAnchor;
+			
+			if(x < minX){
+				rectification = x - minX;
+				x = minX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}else if(x > maxX){
+				rectification = x - maxX;
+				x = maxX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}
+			
+			if(y < minY){
+				overflow = true;
+			}
+			
+		}else if(type == 'bottom'){
+			x = targetPos.left + parseInt((targetWidth - tipWidth)/2);
+			y = targetPos.top + targetHeight + this.offsetAnchor;
+			if(x < minX){
+				rectification = x - minX;
+				x = minX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}else if(x > maxX){
+				rectification = x - maxX;
+				x = maxX;
+				anchorOffset = parseInt(tipWidth/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('left',anchorOffset + 'px');
+			}
+			
+			if(y > maxY){
+				overflow = true;
+			}
+			
+		}else if(type == 'left'){
+			x = targetPos.left - tipWidth - this.offsetAnchor;
+			y = targetPos.top + parseInt((targetHeight - tipHeight)/2);
+			
+			if(y < minY){
+				rectification = y - minY;
+				y = minY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}else if(y > maxY){
+				rectification = y - maxY;
+				y = maxY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}
+			
+			if(x < minX){
+				overflow = true;
+			}
+		}else if(type == 'right'){
+			x = targetPos.left + targetWidth + this.offsetAnchor;
+			y = targetPos.top + parseInt((targetHeight - tipHeight)/2);
+			
+			if(y < minY){
+				rectification = y - minY;
+				y = minY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}else if(y > maxY){
+				rectification = y - maxY;
+				y = maxY;
+				anchorOffset = parseInt(tipHeight/2) + rectification;
+				if(anchorOffset < 10){
+					anchorOffset = 10;
+				}
+				arrow.css('top',anchorOffset + 'px');
+			}
+			
+			if(x > maxX){
+				overflow = true;
+			}
+		}
+		this.setPosition(x,y);
+		
+		return overflow;
 	},
 	//private
 	refreshLayout_ToolTip:function(){

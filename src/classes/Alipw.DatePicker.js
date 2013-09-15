@@ -102,6 +102,12 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 	 * @default ['日','一','二','三','四','五','六']
 	 */
 	weekText:['日','一','二','三','四','五','六'],
+	/**
+	 * @property
+	 * @type String
+	 * @description [config option]设定日期输入转换为字符串的匹配格式，此配置仅当DatePicker应用于一个Input Box时才有效。可参见Alipw.utils.Format.date()
+	 * @default 'YYYY-MM-DD'
+	 */
 	format:'YYYY-MM-DD',
 	constructor:function(){
 		Alipw.DatePicker.superclass.constructor.apply(this,arguments);
@@ -303,7 +309,7 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 	},
 	/**
 	 * @public
-	 * @description 设定最小日期。
+	 * @description 设定最小的可选日期。
 	 * @param {Date} date 日期
 	 */
 	setMinDate:function(date){
@@ -312,7 +318,7 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 	},
 	/**
 	 * @public
-	 * @description 设定最大日期。
+	 * @description 设定最大的可选日期。
 	 * @param {Date} date 日期
 	 */
 	setMaxDate:function(date){

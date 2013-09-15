@@ -103,14 +103,7 @@ Alipw.Pagination = Alipw.extend(Alipw.Component,
 		Alipw.BoxComponent.superclass._doLayout.apply(this,arguments);
 	},
 	//private
-	createPageItems_Pagination:function(){
-		var pageTotal = this.getPageTotal();
-		if(pageTotal == 0){
-			this.currentPage = 0;
-		}else if(this.currentPage > pageTotal || this.currentPage == 0){
-			this.currentPage = 1;
-		}
-		
+	createPageItems_Pagination:function(){		
 		this.pageItems = new Array();
 		
 		this.leftEllipsis = jQuery('<span class="' + this.baseCls + '-ellipsis">…</span>');

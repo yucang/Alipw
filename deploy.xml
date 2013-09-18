@@ -14,7 +14,7 @@
 		<echo>Target path does not exist</echo>
 	</target>
 	<target name="publish" if="${deplaypath.exist}" depends="show message">
-		<copy todir="{$deploypath}" overwrite="true">
+		<copy todir="${deploypath}" overwrite="true">
 			<fileset dir="${release.lib}" />
 		</copy>
 	</target>

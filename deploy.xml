@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Alipw Deploy" default="publish" basedir="">
+    <description>Deploy Alipw to specific folder</description>
+	<property name="release" location="bin-release" />
+	<property name="release.lib" location="${release}/alipw" />
+	<property name="deploypath" location="/Users/Jevon/Documents/workspace/static/console/lib/js/lib/alipw2/2.0/alipw" />
+    <property name="charset" value="utf-8"/>
+	
+	
+	<target name="validate">
+		<available file="${deploypath}" type="dir" property="deplaypath.exist" />
+	</target>
+	<target name="show message" depends="validate" unless="deplaypath.exist">
+		<echo>Target path does not exist</echo>
+	</target>
+	<target name="publish" if="${deplaypath.exist}" depends="show message">
+		<copy todir="{$deploypath}" overwrite="true">
+			<fileset dir="${release.lib}" />
+		</copy>
+	</target>
+</project>

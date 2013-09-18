@@ -23,10 +23,15 @@
     </target>
 	
 	<target name="buildStructure" depends="init">
-		<copydir dest="${release.lib}" src="${src}"></copydir>
-		<copydir dest="${release}" src="${samples}"></copydir>
-		<!--<copydir dest="${release}" src="${baselib}"></copydir>-->
-		<copydir dest="${release.baselib}" src="${baselib}"></copydir>
+		<copy todir="${release.lib}">
+			<fileset dir="${src}" />
+		</copy>
+		<copy todir="${release}">
+			<fileset dir="${samples}" />
+		</copy>
+		<copy todir="${release.baselib}">
+			<fileset dir="${baselib}" />
+		</copy>
 		<delete includeemptydirs="true">
     		<fileset dir="${release.lib}/resources/css/" includes="**/" defaultexcludes="false"/>
     	</delete>
@@ -116,6 +121,8 @@
 	</target>
 	
 	<target name="publish" depends="clear">
-		<copydir dest="${publish}" src="${release}"></copydir>
+		<copy todir="${publish}">
+			<fileset dir="${release}" />
+		</copy>
 	</target>
 </project>

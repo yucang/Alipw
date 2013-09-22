@@ -14,7 +14,9 @@
 .alipw-datepicker-body table td{ text-align:center; vertical-align:middle;}
 .alipw-datepicker-body table th{ padding:3px 3px 6px 3px; color:#666;}
 .alipw-datepicker-body table td{ padding:3px; color:#333; cursor:pointer;}
-.alipw-datepicker-body table td.alipw-datepicker-nextmonth{ color:#999;}
-.alipw-datepicker-body table td.alipw-datepicker-today{ background:#DFEAF8; color:#000;}
+.alipw-datepicker-body table td.alipw-datepicker-cell-lastmonth,
+.alipw-datepicker-body table td.alipw-datepicker-cell-nextmonth{ color:#999;}
+.alipw-datepicker-body table td.alipw-datepicker-cell-today{ background:#DFEAF8; color:#000;}
 .alipw-datepicker-body table td.alipw-datepicker-cell-over{ background:#EDF5FE;}
 .alipw-datepicker-body table td.alipw-datepicker-cell-disabled{ color:#DDD; background:#FFF; cursor:default;}
+.alipw-datepicker-body table td.alipw-datepicker-cell-selected{ color:#000; background:#99E5FF; cursor:default;}

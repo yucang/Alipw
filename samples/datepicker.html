@@ -6,13 +6,11 @@
 <title>Date Picker</title>
 <script type="text/javascript">
 Alipw.importClass(
-	"Alipw.DatePicker"
+	"Alipw.DatePicker","Alipw.Button"
 );
 Alipw.onReady(function(){
 	var datePicker = new Alipw.DatePicker({
-		renderTo:"#wrapper",
-		minDate:new Date('2012/09/12'),
-		maxDate:new Date('2012/09/15')
+		renderTo:"#wrapper"
 	});
 	datePicker.addEventListener("select",function(e){
 		alert(e.currentTarget.selectedDate);
@@ -24,14 +22,32 @@ Alipw.onReady(function(){
 		applyTo:"#dateInput"
 	});
 	
+	var button = new Alipw.Button({
+		label:'setDate',
+		inlineStyle:{'margin-right':'5px'},
+		handler:function(){
+			datePicker.setDate(new Date('2013/10/20'));
+		},
+		renderTo:'#buttons'
+	});
+	
+	var button = new Alipw.Button({
+		label:'setSelectedDate',
+		handler:function(){
+			datePicker.setSelectedDate(new Date('2013/10/20'));
+		},
+		renderTo:'#buttons'
+	});
+	
 });
 </script>
 </head>
 <body>
 Manually rendered Date Picker:
-<div id="wrapper" style="padding:10px; margin-bottom:30px; height:260px; width:300px;">
+<div id="wrapper" style="padding:10px; margin-bottom:30px; height:200px; width:300px;">
 
 </div>
+<div id="buttons" style="height:100px;"></div>
 Applied to a input box:
 <input id="dateInput" type="text" style="font-size:12px;" />
 </body>

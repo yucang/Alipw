@@ -127,6 +127,7 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 				var date = Alipw.utils.Date.parse(fieldValue,this.format);
 				if(date && date != 'Invalid Date' && !isNaN(date)){
 					this.date = date;
+					this.selectedDate = date;
 				}
 			}
 		}
@@ -169,7 +170,7 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 				jQuery(document).unbind("click",documentHandler);
 			},this);
 			this.addEventListener("select",function(e){
-				var date = e.currentTarget.selectedDate;
+				var date = e.currentTarget.selectedDate;			
 				this._applyToEl.val(Alipw.utils.Date.format(date,this.format));
 				this.hide();
 			},this);
@@ -187,28 +188,24 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 			var current = [this.date.getFullYear(),this.date.getMonth() + 1];
 			var dateTo = [current[0] - 1,current[1]];
 			this.setDate(new Date(dateTo[0],dateTo[1] - 1));
-			this.updateNavigationInfo();
 		},this));
 		this.el.find('.' + this.baseCls + '-navbar-btn-prevmonth').click(jQuery.proxy(function(e){
 			e.preventDefault();
 			var current = [this.date.getFullYear(),this.date.getMonth() + 1];
 			var dateTo = current[1] == 1 ? [current[0] - 1,12]:[current[0],current[1] - 1];
 			this.setDate(new Date(dateTo[0],dateTo[1] - 1));
-			this.updateNavigationInfo();
 		},this));
 		this.el.find('.' + this.baseCls + '-navbar-btn-nextyear').click(jQuery.proxy(function(e){
 			e.preventDefault();
 			var current = [this.date.getFullYear(),this.date.getMonth() + 1];
 			var dateTo = [current[0] + 1,current[1]];
 			this.setDate(new Date(dateTo[0],dateTo[1] - 1));
-			this.updateNavigationInfo();
 		},this));
 		this.el.find('.' + this.baseCls + '-navbar-btn-nextmonth').click(jQuery.proxy(function(e){
 			e.preventDefault();
 			var current = [this.date.getFullYear(),this.date.getMonth() + 1];
 			var dateTo = current[1] == 12 ? [current[0] + 1,1]:[current[0],current[1] + 1];
 			this.setDate(new Date(dateTo[0],dateTo[1] - 1));
-			this.updateNavigationInfo();
 		},this));
 		
 		
@@ -219,7 +216,7 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 				if(e.target.getAttribute('celldisabled') == 'true'){
 					return;
 				}
-				this.selectedDate = new Date(this._calendarData[selectedIndex].year,this._calendarData[selectedIndex].month - 1,this._calendarData[selectedIndex].day);
+				this.setSelectedDate(new Date(this._calendarData[selectedIndex].year,this._calendarData[selectedIndex].month - 1,this._calendarData[selectedIndex].day));
 				this.fireEvent('select',{},false);
 			}
 		},this));
@@ -272,19 +269,28 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 		var cellCls;
 		
 		var today = new Date();
-		todayYear = today.getFullYear();
-		todayMonth = today.getMonth() + 1;
-		todayDay = today.getDate();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth() + 1;
+		var todayDay = today.getDate();
+		
+		var selectedYear,selectedMonth,selectedDay;
+		if(this.selectedDate){
+			selectedYear = this.selectedDate.getFullYear();
+			selectedMonth = this.selectedDate.getMonth() + 1;
+			selectedDay = this.selectedDate.getDate();
+		}
 		for(var i=0,len=cellData.length;i<len;i++){
 			if(i != 0 && i % 7 == 0){
 				html += '</tr><tr>';
 			}
 			if(cellData[i].isLastMonth){
-				cellCls = this.baseCls + '-lastmonth';
+				cellCls = this.baseCls + '-cell-lastmonth';
 			}else if(cellData[i].isNextMonth){
-				cellCls = this.baseCls + '-nextmonth';
+				cellCls = this.baseCls + '-cell-nextmonth';
+			}else if(cellData[i].year == selectedYear && cellData[i].month == selectedMonth && cellData[i].day == selectedDay){
+				cellCls = this.baseCls + '-cell-selected';
 			}else if(cellData[i].year == todayYear && cellData[i].month == todayMonth && cellData[i].day == todayDay){
-				cellCls = this.baseCls + '-today';
+				cellCls = this.baseCls + '-cell-today';
 			}else{
 				cellCls = '';
 			}
@@ -306,6 +312,30 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 	setDate:function(date){
 		this.date = date;
 		this.renderCells(this.date.getFullYear(), this.date.getMonth() + 1);
+		this.updateNavigationInfo();
+	},
+	/**
+	 * @public
+	 * @description 设定当前被选中的日期。
+	 * @param {Date} date 日期
+	 */
+	setSelectedDate:function(date){
+		if(!(date instanceof Date)){
+			return;
+		}
+		var changed;
+		if(!this.selectedDate){
+			changed = true;
+		}else if(this.selectedDate.getTime() != date.getTime()){
+			changed = true;
+		}
+		
+		this.selectedDate = date;
+		this.setDate(new Date(date.getFullYear(),date.getMonth(),1));
+		
+		if(changed){
+			this.fireEvent('selectedDateChanged',{},false);
+		}
 	},
 	/**
 	 * @public
@@ -330,6 +360,7 @@ Alipw.DatePicker = Alipw.extend(Alipw.BorderContainer,
 		var days = new Array();
 		
 		var getDayNum = function(year,month){
+			var res;
 			var leap = (year%100==0 ? res=(year%400==0 ? 1 : 0) : res=(year%4==0 ? 1: 0));
 			var daysNum = new Array(31,28+leap,31,30,31,30,31,31,30,31,30,31);
 			return daysNum[month - 1];

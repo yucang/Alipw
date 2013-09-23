@@ -171,6 +171,13 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 	},
 	commitProperties:function(){
 		Alipw.ComboBox.superclass.commitProperties.apply(this,arguments);
+		
+		//private and cannot be common
+		this.storeChangeHandler_ComboBox = function(){
+			if(this.destroyed)return;
+			this.updateStore();
+		};
+		
 		if(this.applyTo){
 			this.fieldEl = Alipw.convertEl(this.applyTo);
 			if(this.fieldEl[0]){
@@ -262,10 +269,21 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 		if(!this.enabled){
 			this.setEnabled_ComboBox(false);
 		}
+		
+		if(this.store instanceof Alipw.DataStore){
+			this.store.addEventListener('change',this.storeChangeHandler_ComboBox,this);
+		}
 	},
 	//protected
 	_doLayout:function(){
 		Alipw.ComboBox.superclass._doLayout.apply(this,arguments);
+	},
+	destroy:function(){
+		Alipw.ComboBox.superclass.destroy.apply(this,arguments);
+		
+		if(this.store instanceof Alipw.DataStore){
+			this.store.removeEventListener('change',this.storeChangeHandler_ComboBox);
+		}
 	},
 	/**
 	 * @public
@@ -392,8 +410,16 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 	 * @param {Alipw.DataStore} store 数据寄存器
 	 */
 	setStore:function(store){
+		if(this.store instanceof Alipw.DataStore){
+			this.store.removeEventListener('change',this.storeChangeHandler_ComboBox);
+		}
+		
 		this.store = store;
-		this.updateStore();
+		this.storeChangeHandler_ComboBox();
+		
+		if(this.store instanceof Alipw.DataStore){
+			this.store.addEventListener('change',this.storeChangeHandler_ComboBox,this);
+		}
 	},
 	/**
 	 * @public
@@ -403,8 +429,6 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 		if(!this.store)return;
 		var data = this.store.getData();
 		
-		var value = data[0] ? data[0][this.valueField]:'';
-		
 		if(this.fieldEl[0].nodeName == 'SELECT'){
 			this.fieldEl.empty();
 			Alipw.each(data,function(i,item){
@@ -412,13 +436,14 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 			},this);
 		}
 		
-		this.setValue(value);
+		this.setValue(this.value);
+		if(this.value == null && data[0]){
+			this.setValue(data[0][this.valueField]);
+		}
 		if(this.list){
 			this.collapse();
 			this.list.destroy();
 			this.list = null;
-			//this.list.setStore(this.store);
-			//this.list.setValue(value);
 		}
 	},
 	enable:function(){
@@ -462,6 +487,7 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 	},
 	//private
 	clickHandler_ComboBox:function(e){
+		if(this.destroyed)return;
 		if(this.expanded){
 			this.collapse();
 		}else{
@@ -506,10 +532,12 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 	},
 	//private
 	listItemClickHandler_ComboBox:function(e){
+		if(this.destroyed)return;
 		this.collapse();
 	},
 	//private
 	listSelectHandler_ComboBox:function(e){
+		if(this.destroyed)return;
 		this.fireEvent('select',{
 			index:e.index,
 			item:e.item
@@ -517,6 +545,7 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 	},
 	//private
 	listValueChangeHandler_ComboBox:function(e){
+		if(this.destroyed)return;
 		var list = e.currentTarget;
 		this.applyValue_ComboBox(list.value);
 		this.fireEvent('valueChange',{},false);
@@ -524,6 +553,7 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 	},
 	//private
 	listChangeHandler_ComboBox:function(e){
+		if(this.destroyed)return;
 		this.fireEvent('change',{},false);
 		this.fieldEl.trigger('change');
 	}

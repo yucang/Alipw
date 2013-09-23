@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="alipw/classes/alipw-base.js"></script>
+<title>Data Store</title>
+<script type="text/javascript">
+Alipw.importClass("Alipw.DataStore","Alipw.ComboBox","Alipw.Button");
+Alipw.onReady(function(){
+	var ds = new Alipw.DataStore({
+		data:[
+			{
+				name:'Jevon',
+				age:27,
+				height:180,
+				sex:'male'
+			},{
+				name:'Demi',
+				age:26,
+				height:200,
+				sex:'female'
+			},{
+				name:'John',
+				age:27,
+				height:190,
+				sex:'male'
+			},{
+				name:'Simith',
+				age:35,
+				height:183,
+				sex:'male'
+			},{
+				name:'Kite',
+				age:24,
+				height:164,
+				sex:'female'
+			},{
+				name:'Rose',
+				age:32,
+				height:159,
+				sex:'female'
+			}
+		]
+	});
+	
+	var list = new Alipw.List({
+		store:ds,
+		displayField:'name',
+		valueField:'name',
+		renderTo:'#list_wrap',
+		value:'Jevon'
+	});
+	
+	var combo = new Alipw.ComboBox({
+		store:ds,
+		displayField:'name',
+		valueField:'name',
+		renderTo:'#combo_wrap',
+		value:'Jevon'
+	});
+	
+	var sortByCombo = new Alipw.ComboBox({
+		renderTo:'#operation_sort_wrap',
+		inlineStyle:{'margin-right':'5px'},
+		store:new Alipw.DataStore({
+			data:[
+				{
+					text:'sort by age',
+					value:'age',
+				},{
+					text:'sort by name',
+					value:'name',
+				},{
+					text:'sort by height',
+					value:'height',
+				},{
+					text:'sort by sex',
+					value:'sex'
+				}
+			]
+		}),
+		value:'age'
+	});
+	
+	var orderCombo = new Alipw.ComboBox({
+		renderTo:'#operation_sort_wrap',
+		inlineStyle:{'margin-right':'5px'},
+		store:new Alipw.DataStore({
+			data:[
+				{
+					text:'asc',
+					value:'asc',
+				},{
+					text:'desc',
+					value:'desc',
+				}
+			]
+		}),
+		value:'asc'
+	});
+	
+	var sortButton = new Alipw.Button({
+		renderTo:'#operation_sort_wrap',
+		label:'Sort!',
+		inlineStyle:{'vertical-align':'middle'},
+		handler:function(){
+			ds.sort(sortByCombo.value,orderCombo.value);
+		}
+	});
+	
+	var insertButton = new Alipw.Button({
+		renderTo:'#operation_insert_wrap',
+		label:'Insert!',
+		handler:function(){
+			ds.insert([{name:'Cathy',age:'18'}]);
+		}
+	});
+	
+	var insertButton = new Alipw.Button({
+		renderTo:'#operation_change_wrap',
+		label:'Insert!',
+		handler:function(){
+			ds.insert([{name:'Cathy',age:'18'}]);
+		}
+	});
+	
+	var records = ds.get({
+		filter:{
+			sex:'male'
+		}
+	});
+	ds.del(records)
+});
+</script>
+</head>
+<body>
+	<div>
+		<div style="float:left" id="list_wrap">
+			
+		</div>
+		<div style="float:left" id="combo_wrap">
+			
+		</div>
+	</div>
+	<div id="operation_sort_wrap" style="padding-top:10px; clear:both;"></div>
+	<div id="operation_change_wrap" style="padding-top:10px; clear:both;"></div>
+</body>
+</html>

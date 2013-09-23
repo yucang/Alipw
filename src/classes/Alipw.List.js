@@ -27,6 +27,12 @@ Alipw.List = Alipw.extend(Alipw.BorderContainer,
 	autoWidth:false,
 	commitProperties:function(){
 		Alipw.List.superclass.commitProperties.apply(this,arguments);
+		
+		//private and cannot be common
+		this.storeChangeHandler_List = function(){
+			if(this.destroyed)return;
+			this.updateListItems();
+		};
 	},
 	initialize:function(){
 		Alipw.List.superclass.initialize.apply(this,arguments);
@@ -42,6 +48,17 @@ Alipw.List = Alipw.extend(Alipw.BorderContainer,
 		
 		if(this.scroll){
 			this.getBody().css('overflow-y','auto');
+		}
+		
+		if(this.store instanceof Alipw.DataStore){
+			this.store.addEventListener('change',this.storeChangeHandler_List,this);
+		}
+	},
+	destroy:function(){
+		Alipw.List.superclass.destroy.apply(this,arguments);
+		
+		if(this.store instanceof Alipw.DataStore){
+			this.store.removeEventListener('change',this.storeChangeHandler_List);
 		}
 	},
 	getContentWidth:function(){
@@ -80,7 +97,7 @@ Alipw.List = Alipw.extend(Alipw.BorderContainer,
 		}
 	},
 	renderListItem:function(){
-		if(!this.store instanceof Alipw.DataStore) return;
+		if(!(this.store instanceof Alipw.DataStore)) return;
 		
 		var data = this.store.getData();
 		Alipw.each(data,function(i,o){
@@ -139,8 +156,12 @@ Alipw.List = Alipw.extend(Alipw.BorderContainer,
 	},
 	setStore:function(store){
 		if(store instanceof Alipw.DataStore){
+			if(this.store instanceof Alipw.DataStore){
+				this.store.removeEventListener('change',this.storeChangeHandler_List);
+			}
 			this.store = store;
-			this.updateListItems();
+			this.storeChangeHandler_List();
+			this.store.addEventListener('change',this.storeChangeHandler_List,this);
 		}
 	},
 	updateListItems:function(){

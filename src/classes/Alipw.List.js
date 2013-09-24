@@ -28,7 +28,7 @@ Alipw.List = Alipw.extend(Alipw.BorderContainer,
 	commitProperties:function(){
 		Alipw.List.superclass.commitProperties.apply(this,arguments);
 		
-		//private and cannot be common
+		//private and cannot be common between different instances
 		this.storeChangeHandler_List = function(){
 			if(this.destroyed)return;
 			this.updateListItems();

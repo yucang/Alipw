@@ -516,15 +516,15 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 		
 		if(this.list){
 			if(Alipw.isInNode(e.target,this.list.el[0])){
-				e.preventDefault();
-				
-				var detail;
-				if(Alipw.isIE || Alipw.isOpera || Alipw.isWebKit){
-					detail = -1 * e.wheelDelta / 40;
-				}else{
-					detail = e.detail;
-				}
-				this.list.scrollY(detail * 10);
+//				e.preventDefault();
+//				
+//				var detail;
+//				if(Alipw.isIE || Alipw.isOpera || Alipw.isWebKit){
+//					detail = -1 * e.wheelDelta / 40;
+//				}else{
+//					detail = e.detail;
+//				}
+//				this.list.scrollY(detail * 10);
 			}else{
 				this.collapse();
 			}

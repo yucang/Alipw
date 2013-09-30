@@ -35,6 +35,7 @@ Alipw.ClassManager = function(){
 		'Alipw.Gallery':['Alipw.DataProxy'],
 		'Alipw.Slider':['Alipw.Component'],
 		'Alipw.Scrollbar':['Alipw.Slider'],
+		'Alipw.ScrollView':['Alipw.BorderContainer'],
 		'Alipw.ValidatorGroup':['Alipw.Validator'],
 		'Alipw.List':['Alipw.BorderContainer','Alipw.ListItem','Alipw.DataStore'],
 		'Alipw.ComboBox':['Alipw.BorderContainer','Alipw.List'],

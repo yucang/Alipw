@@ -89,6 +89,7 @@
 			<path path="${src}/classes/Alipw.Msg.js" />
 			<path path="${src}/classes/Alipw.Slider.js" />
 			<path path="${src}/classes/Alipw.Scrollbar.js" />
+			<path path="${src}/classes/Alipw.ScrollView.js" />
 			<path path="${src}/classes/Alipw.ColorPicker.js" />
 			<path path="${src}/classes/Alipw.DatePicker.js" />
 			<path path="${src}/classes/Alipw.DataProxy.js" />

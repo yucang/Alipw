@@ -364,6 +364,8 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 		this.expanded = true;
 		this.el.addClass(this.expandedCls);
 		this.__isExpanding = false;
+		
+		this.fireEvent('expand',{},false);
 	},
 	/**
 	 * @public
@@ -379,6 +381,8 @@ Alipw.ComboBox = Alipw.extend(Alipw.BorderContainer,
 		this.el.removeClass(this.expandedCls);
 		this.el.removeClass(this.expandedUpCls);
 		this.el.removeClass(this.expandedDownCls);
+		
+		this.fireEvent('collapse',{},false);
 	},
 	/**
 	 * @public

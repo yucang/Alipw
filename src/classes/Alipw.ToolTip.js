@@ -222,6 +222,7 @@ Alipw.ToolTip = Alipw.extend(Alipw.BorderContainer,
 		if(y < 0)y = 0;
 		
 		this.setPosition(x,y);
+		Alipw.ComponentManager.bringToFront(this);
 	},
 	/**
 	 * @public

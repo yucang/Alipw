@@ -415,6 +415,7 @@ Alipw.Window = Alipw.extend(Alipw.Panel,
 			var _this = this;
 			clearTimeout(this.centerTimer);
 			this.centerTimer = setTimeout(function(){
+				if(_this.destroyed)return;
 				_this.center();
 			},10);
 		}

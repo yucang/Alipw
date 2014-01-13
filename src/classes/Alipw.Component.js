@@ -351,7 +351,10 @@ Alipw.Component = function(){
 		destroy:function(){
 			if(this.destroyed)return;
 			
-			this.fireEvent("destroy",{},false);
+			var result = this.fireEvent("destroy",{},false);
+			if(result === false){
+				return;
+			}
 			
 			//destroy child alipw components
 			this.el.find('*[alipw_component=true]').each(function(i,el){
@@ -375,6 +378,8 @@ Alipw.Component = function(){
 		 * @param {Boolean} [silent] 是否无声。如为true,则当可见属性改变时，不触发visibilityChange事件。默认为false.
 		 */
 		setVisible:function(visible,includeInLayout,silent){
+			if(this.destroyed)return;
+			
 			if(!Alipw.isSet(includeInLayout)){
 				includeInLayout = visible;
 			}
